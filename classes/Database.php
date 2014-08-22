@@ -30,7 +30,7 @@ class Database {
         {
             die('SYS Error: Please contact the system administrator!!!');
         }
-        return $this;
+        return $this->pdo;
     }
 	
     /**
