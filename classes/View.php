@@ -1,7 +1,9 @@
 <?php
-define('VIEWS_F', 'views' . DIRECTORY_SEPARATOR);
+// define('VIEWS_F', 'views' . DIRECTORY_SEPARATOR);
 
 class View {
+	
+	private $views_folder = 'views' . DIRECTORY_SEPARATOR;
 
 	/**
 	* 
@@ -17,7 +19,7 @@ class View {
 	
 	public static function render($name, $data = array(), $template = TRUE)
 	{
-		$file_path = VIEWS_F . $name . '.php';
+		$file_path = $this->views_folder . $name . '.php';
 		if(file_exists($file_path))
 		{
 			if(is_array($data))
@@ -26,7 +28,7 @@ class View {
 			}
 			else
 			{
-                throw new Exception('Invalid DATA type: ' . gettype($data));  
+                		throw new Exception('Invalid DATA type: ' . gettype($data));  
 			}
 			
 			if($template === FALSE)
@@ -35,9 +37,9 @@ class View {
 			}
 			else
 			{
-				require VIEWS_F . 'template'. DS .'header.php';
+				require $this->views_folder . 'template'. DS .'header.php';
 				require $file_path;
-				require VIEWS_F . 'template'. DS .'footer.php';
+				require $this->views_folder . 'template'. DS .'footer.php';
 			}
 		}
 		else
