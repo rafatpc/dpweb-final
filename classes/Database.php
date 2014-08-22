@@ -24,7 +24,7 @@ class Database {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
         try {
-            $this->pdo = new PDO('mysql:host='.$host.';dbname='.$database, $username, $password, $options);
+            $this->pdo = new PDO('odbc:Driver={SQL Server};Server='.$host.';Database='.$database, $username, $password, $options);
         }
         catch(Exception $sql_err)
         {
