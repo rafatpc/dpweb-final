@@ -10,4 +10,4 @@ community - what web does they want! I will make everyone's ideas come true!
 And I hope that this will be the PERFECT WEB!
 
 Thanks to DarksTeam for support!
-Thanks MeMoS that he expressed desire to help me with the hard work!
+Thanks MeMoS(Athov) that he expressed desire to help me with the hard work!
