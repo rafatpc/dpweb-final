@@ -31,14 +31,17 @@ class Misc {
 
     public static function is_online($char_name, $only_user=0)
     {
+            // TODO
             $accountid = mssql_fetch_row(
                     mssql_query("SELECT AccountID FROM Character WHERE Name='". $char_name ."'")
             );
 
+            // TODO
             $check_status = mssql_fetch_row(
                     mssql_query("SELECT ConnectStat FROM MEMB_STAT WHERE memb___id='". $accountid[0] ."'")
             );
 
+            // TODO
             $name = mssql_fetch_row(
                     mssql_query("SELECT GameIDC FROM AccountCharacter WHERE id='". $accountid[0] ."'")
             );
@@ -50,10 +53,12 @@ class Misc {
 
     public static function chararacter_info($char_name)
     {
+            // TODO
             $char = mssql_fetch_array(
                     mssql_query("SELECT * FROM Character WHERE Name='". $char_name ."'")
             );
 
+            // TODO
             $guild = mssql_fetch_array(
                     mssql_query("SELECT G_Name FROM GuildMember WHERE Name='". $char['Name'] ."'")
             );
