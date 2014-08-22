@@ -7,7 +7,7 @@ class Database {
 
     private function __construct() {}
 
-    public function getInstance() 
+    public static function getInstance() 
     {
         if(self::$instance === NULL)
         {
