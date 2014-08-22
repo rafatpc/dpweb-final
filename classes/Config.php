@@ -1,15 +1,16 @@
 <?php
-define('CONFIG_F', 'config' . DIRECTORY_SEPARATOR);
+//define('CONFIG_F', 'config' . DIRECTORY_SEPARATOR);
 
 class Config {
 
     private $_config = array();
+    private $config_folder = 'config' . DIRECTORY_SEPARATOR;
 	
     public function load($name)
 	{
         if(!empty($name))
 		{
-			$_file = realpath(CONFIG_F . $name . '.php');
+			$_file = realpath($this->config_folder . $name . '.php');
 			
 			if ($_file != FALSE && is_file($_file) && is_readable($_file))
 			{
