@@ -112,7 +112,7 @@ class Database {
             }
         }
         $fields = rtrim($fields,', ');
-        $sql = 'UPDATE '.$table.' SET ' . $fields . ' WHERE `' . $where . '` = :' . $where;
+        $sql = 'UPDATE '.$table.' SET ' . $fields . ' WHERE ' . $where;
         $this->_query($sql,$data);
         return true;
     }
