@@ -8,8 +8,10 @@ class CoreController
     public $models_folder = null;
     public $view = null;
 
-    function __construct() {
+    public function __construct() {
         $this->models_folder = APP . 'models/';
+        $driver = '\\' . \Config::get('database.driver');
+        $this->db = new $driver();
     }
 
     public function loadModel($name)
