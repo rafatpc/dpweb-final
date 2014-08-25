@@ -4,9 +4,6 @@ namespace DPWeb\Application;
 
 class Autoloader {
 
-    private $_fileExtension = '.php';
-    private $_namespaceSeparator = '\\';
-
     /**
      * Creates a new <tt>Autoloader</tt> that loads classes.
      *
@@ -39,14 +36,14 @@ class Autoloader {
     public function loadClass($className) {
         if ($className) {
             $components = preg_split("/\\\\/", $className, -1, PREG_SPLIT_NO_EMPTY);
-            ;
-            $file = ucfirst(end($components) . $this->_fileExtension);
+            
+            $file = ucfirst(end($components) . '.php');
             unset($components[count($components) - 1], $components[0]);
             $path = implode(DIRECTORY_SEPARATOR, $components);
             $filepath = $path . DIRECTORY_SEPARATOR . $file;
 
             if (!is_dir($path) || !is_readable($filepath) || !file_exists($filepath)) {
-                throw new \Exception("Couldn't load the requested class: {$filepath}", 404);
+                throw new \Exception("Couldn't load the requested class: {$file}", 404);
             }
 
             require $filepath;
