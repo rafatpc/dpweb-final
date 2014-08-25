@@ -3,18 +3,18 @@ namespace Core\Classes;
 
 class CoreController 
 {
-    public $models = array();
+    private $models = array();
     public $db = NULL;
     public $models_folder = null;
     public $view = null;
 
     public function __construct() {
-        $this->models_folder = APP . 'models/';
+        $this->models_folder = \Config::get('paths.models');
         $driver = '\\' . \Config::get('database.driver');
         $this->db = new $driver();
     }
 
-    public function loadModel($name)
+    public function model($name)
     {
         $model = ucfirst($name);
         $file_path = $this->models_folder . $name . '.php';
@@ -23,18 +23,18 @@ class CoreController
         {
             throw new \Exception('empty_name');
         }
-        if(is_subclass_of($name, 'Model'))
-        {
-            throw new \Exception($model . ' doesn&#39;t extends Model.');
-        }
         
-        if (in_array(lcfirst($name), $this->models)) {
-            throw new \Exception('already_is_loaded');
+        if (array_key_exists(strtolower($name), $this->models)) {
+            return $this->models[strtolower($name)];
         }
 
         if (file_exists($file_path)) {
             require $file_path;
-            $this->models[lcfirst($name)] = new $model();
+            if(!is_subclass_of($name, 'Model'))
+            {
+                throw new \Exception($model . ' doesn&#39;t extends Model.');
+            }
+            return $this->models[strtolower($name)] = new $model();
         } else {
             throw new \Exception('non_existent_file');
         }
