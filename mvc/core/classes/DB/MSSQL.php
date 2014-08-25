@@ -8,17 +8,17 @@ class MSSQL extends \PDO
     
     public function __construct()
     {
-	$host = '127.0.0.1';
-	$username = 'sa';
-	$password = 'sql_pass';
-	$database = 'MuOnline';
-        
+    	$host = \Config::get('database.host');
+    	$username = \Config::get('database.username');
+    	$password = \Config::get('database.password');
+    	$database = \Config::get('database.dbname');
+    	
         $options = array(
                 \PDO::ATTR_PERSISTENT => true, 
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
         );
         
-	parent::__construct('odbc:Driver={SQL Server};Server='.$host.';Database='.$database, $username, $password, $options);
+	mssql_connect($host, $username, $password);
     }
     
     
@@ -47,17 +47,17 @@ class MSSQL extends \PDO
         return $this;
     }
     
-    public function build($fetch = true, $fetch_mode = \PDO::FETCH_ASSOC)
+    public function build($fetch = true, $fetch_mode = 'assoc')
     {
-        $stmt = $this->prepare($this->query);
-        
+        $query = $this->query;
         foreach ($this->params as $key => $value) {
-            $stmt->bindValue($key, $value);
+			$query = str_replace(':'. $key, $value, $this->query);
         }
-        
-        $stmt->execute();
+        $stmt = mssql_query($query);
+
         if($fetch === true) {
-            return $stmt->fetchAll($fetch_mode);
+    	 	$fetching = 'mssql_' . $fetch_mode();
+            return $fetching($stmt);
         }
         return $stmt;
     }
