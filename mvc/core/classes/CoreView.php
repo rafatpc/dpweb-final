@@ -16,7 +16,7 @@ class CoreView {
     
     public function __construct($name = null, $data = array(), $template = null)
     {
-        $this->views_folder = APP . 'views/';
+        $this->views_folder = \Config::get('paths.views');
         
         $this->setData($data);
         $this->setTemplate($template);
