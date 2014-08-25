@@ -1,7 +1,7 @@
 <?php
 
 require_once './application/DPWeb.php';
-require './libs/Smarty/Smarty.class.php';
+require './application/libs/Smarty/Smarty.class.php';
 
 $smarty = new Smarty;
 

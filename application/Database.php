@@ -40,8 +40,7 @@ class Database {
      * @param array
      * @return object
      */
-    public function query($sql, $data)
-    {
+    public function query($sql, $data) {
         $this->query_string = $sql;
         $this->data = $data;
         return $this;
@@ -53,8 +52,7 @@ class Database {
      * @param string
      * @return object
      */
-    public function select($what="*")
-    {
+    public function select($what = "*") {
         $this->query_string = "SELECT " . $what;
         return $this;
     }
@@ -65,12 +63,11 @@ class Database {
      * @param string 
      * @return object
      */
-    public function from($table)
-    {
+    public function from($table) {
         $this->query_string = $this->query_string . " FROM " . $table;
         return $this;
     }
-    
+
     /**
      * where()
      *
@@ -79,14 +76,13 @@ class Database {
      * @param array
      * @return object
      */
-    public function where($what, $sign, $value)
-    {
+    public function where($what, $sign, $value) {
         $value_key = strtolower($what);
-        $this->query_string = $this->query_string . " WHERE " . $what . $sign .":" . $value_key;
+        $this->query_string = $this->query_string . " WHERE " . $what . $sign . ":" . $value_key;
         $this->data = array_merge($this->data, array($value_key => $value));
         return $this;
     }
-    
+
     /**
      * andWhere()
      *
@@ -95,14 +91,13 @@ class Database {
      * @param array
      * @return object
      */
-    public function andWhere($what, $sign, $value)
-    {
+    public function andWhere($what, $sign, $value) {
         $value_key = strtolower($what);
-        $this->query_string = $this->query_string . " AND " . $what . $sign .":" . $value_key;
+        $this->query_string = $this->query_string . " AND " . $what . $sign . ":" . $value_key;
         $this->data = array_merge($this->data, array($value_key => $value));
         return $this;
     }
-    
+
     /**
      * orWhere()
      *
@@ -111,10 +106,9 @@ class Database {
      * @param array
      * @return object
      */
-    public function orWhere($what, $sign, $value)
-    {
+    public function orWhere($what, $sign, $value) {
         $value_key = strtolower($what);
-        $this->query_string = $this->query_string . " OR " . $what . $sign .":" . $value_key;
+        $this->query_string = $this->query_string . " OR " . $what . $sign . ":" . $value_key;
         $this->data = array_merge($this->data, array($value_key => $value));
         return $this;
     }
@@ -126,8 +120,7 @@ class Database {
      * @param array
      * @return object
      */
-    public function insert($table, $data)
-    {
+    public function insert($table, $data) {
         $columns = ' ';
         $values = ' ';
         foreach ($data as $field_name => $field_value) {
@@ -136,7 +129,7 @@ class Database {
         }
         $columns = rtrim($columns, ', ');
         $values = rtrim($values, ', ');
-        
+
         $this->query_string = 'INSERT INTO ' . $table . ' (' . $columns . ') VALUES (' . $values . ')';
         $this->data = array_merge($this->data, $data);
         return $this;
@@ -155,9 +148,9 @@ class Database {
         foreach ($data as $field_name => $field_value) {
             $fields .= $field_name . '= :' . $field_name . ', ';
         }
-        
+
         $fields = rtrim($fields, ', ');
-        
+
         $this->query_string = 'UPDATE ' . $table . ' SET ' . $fields . ' WHERE ' . $where;
         $this->data = array_merge($this->data, $data);
         return $this;
@@ -199,10 +192,9 @@ class Database {
      * @param array
      * @return Query string
      */
-    private function _query($sql = null, $data = array())
-    {
+    private function _query($sql = null, $data = array()) {
         $query = $this->pdo->prepare($sql);
-        
+
         $value_type = NULL;
         foreach ($data as $key => $value) {
             if (is_null($value_type)) {
@@ -227,16 +219,15 @@ class Database {
 
         return $query->execute();
     }
-    
-    public function execute($fetch = false, $mode = \PDO::FETCH_ASSOC)
-    {
+
+    public function execute($fetch = false, $mode = \PDO::FETCH_ASSOC) {
         $query = $this->_query($this->query_string, $this->data);
-        
-        if($fetch === true) {
+
+        if ($fetch === true) {
             $query = $query->fetchAll($mode);
         }
-        
+
         return $query;
     }
-    
+
 }
