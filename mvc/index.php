@@ -4,7 +4,6 @@ define('ENV', 'development'); // valid "development","production"
 
 define('APP', 'app'. DIRECTORY_SEPARATOR);
 define('CORE', 'core'. DIRECTORY_SEPARATOR);
-define('CONFIG', APP . 'config' . DIRECTORY_SEPARATOR);
 
 require 'core/core.php';
 
@@ -12,7 +11,7 @@ $httprequest = new HttpRequest();
 $httprequest->setConfig(array(
     
         // The folder where the controllers are
-        'controllers_folder' => APP . 'controllers' . DIRECTORY_SEPARATOR,
+        'controllers_folder' => 'app/controllers/',
         
         // The folder of the framework
         // example:
