@@ -1,9 +1,13 @@
 <?php
 
+namespace DPWeb\Application;
+
 class Database {
 
     private $pdo = null;
     private $instance = NULL;
+    private $query_string = NULL;
+    private $data = NULL;
 
     private function __construct() {
         
@@ -19,10 +23,10 @@ class Database {
     public function connect($host, $username, $password, $database) {
         $options = array(
             PDO::ATTR_PERSISTENT => true,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
         );
         try {
-            $this->pdo = new PDO('odbc:Driver={SQL Server};Server=' . $host . ';Database=' . $database, $username, $password, $options);
+            $this->pdo = new \PDO('odbc:Driver={SQL Server};Server=' . $host . ';Database=' . $database, $username, $password, $options);
         } catch (Exception $sql_err) {
             die('SYS Error: Please contact the system administrator!!!');
         }
@@ -30,89 +34,142 @@ class Database {
     }
 
     /**
-     * dbQuery()
+     * query()
      *
-     * @param string $sql An SQL string
-     * @param array $data Paramters to bind
-     * @return Query string
+     * @param string
+     * @param array
+     * @return object
      */
-    public function dbQuery($sql, $data) {
-        $query = $this->_query($sql, $data);
-        return $query;
+    public function query($sql, $data)
+    {
+        $this->query_string = $sql;
+        $this->data = $data;
+        return $this;
     }
 
     /**
      * select()
      *
-     * @param string $sql An SQL string
-     * @param array $data Paramters to bind
-     * @param constant $fetchMode A PDO Fetch mode
-     * @return array or false
+     * @param string
+     * @return object
      */
-    public function select($sql, $data = array(), $fetchMode = PDO::FETCH_ASSOC) {
-        $query = $this->_query($sql, $data);
-        $query->setFetchMode($fetchMode);
-        $rows = array();
-        while ($row = $query->fetch()) {
-            $rows[] = $row;
-        }
-        return $rows;
+    public function select($what="*")
+    {
+        $this->query_string = "SELECT " . $what;
+        return $this;
+    }
+
+    /**
+     * from()
+     *
+     * @param string 
+     * @return object
+     */
+    public function from($table)
+    {
+        $this->query_string = $this->query_string . " FROM " . $table;
+        return $this;
+    }
+    
+    /**
+     * where()
+     *
+     * @param string 
+     * @param string 
+     * @param array
+     * @return object
+     */
+    public function where($what, $sign, $value)
+    {
+        $value_key = strtolower($what);
+        $this->query_string = $this->query_string . " WHERE " . $what . $sign .":" . $value_key;
+        $this->data = array_merge($this->data, array($value_key => $value));
+        return $this;
+    }
+    
+    /**
+     * andWhere()
+     *
+     * @param string 
+     * @param string 
+     * @param array
+     * @return object
+     */
+    public function andWhere($what, $sign, $value)
+    {
+        $value_key = strtolower($what);
+        $this->query_string = $this->query_string . " AND " . $what . $sign .":" . $value_key;
+        $this->data = array_merge($this->data, array($value_key => $value));
+        return $this;
+    }
+    
+    /**
+     * orWhere()
+     *
+     * @param string 
+     * @param string 
+     * @param array
+     * @return object
+     */
+    public function orWhere($what, $sign, $value)
+    {
+        $value_key = strtolower($what);
+        $this->query_string = $this->query_string . " OR " . $what . $sign .":" . $value_key;
+        $this->data = array_merge($this->data, array($value_key => $value));
+        return $this;
     }
 
     /**
      * insert()
      * 
-     * @param string $table A name of a table
-     * @param string $columns Affected columns (username,password,email)
-     * @param string $values Values inserted into the columns (:username,:password,:email) or (?,?,?)
-     * @param array $data Paramters to bind (array('username' => 'myusername')) or(array('myusername'))
-     * @return true
+     * @param string 
+     * @param array
+     * @return object
      */
-    public function insert($table, $data) {
+    public function insert($table, $data)
+    {
         $columns = ' ';
         $values = ' ';
         foreach ($data as $field_name => $field_value) {
-            if ($field_name != 'id') {
-                $columns .= '`' . $field_name . '`, ';
-                $values .= ':' . $field_name . ', ';
-            }
+            $columns .= '[' . $field_name . '], ';
+            $values .= ':' . strtolower($field_name) . ', ';
         }
         $columns = rtrim($columns, ', ');
         $values = rtrim($values, ', ');
-        $sql = 'INSERT INTO ' . $table . ' (' . $columns . ') VALUES (' . $values . ')';
-        $this->_query($sql, $data);
-        return true;
+        
+        $this->query_string = 'INSERT INTO ' . $table . ' (' . $columns . ') VALUES (' . $values . ')';
+        $this->data = array_merge($this->data, $data);
+        return $this;
     }
 
     /**
      * update()
      * 
-     * @param string $table A name of a table
-     * @param string $fields Affected columns and their values (test=:test) or (test=?)
-     * @param string $where the "WHERE" query part doesn't need "WHERE" (username=:username) or (username=?)
-     * @param array $data Paramters to bind (array('username' => 'myusername')) or(array('myusername'))
-     * @return true
+     * @param string
+     * @param string $where = "Username=:username"
+     * @param array
+     * @return object
      */
     public function update($table, $where, $data) {
         $fields = ' ';
         foreach ($data as $field_name => $field_value) {
-            if ($field_name != 'id') {
-                $fields .= $field_name . '= :' . $field_name . ', ';
-            }
+            $fields .= $field_name . '= :' . $field_name . ', ';
         }
+        
         $fields = rtrim($fields, ', ');
-        $sql = 'UPDATE ' . $table . ' SET ' . $fields . ' WHERE ' . $where;
-        $this->_query($sql, $data);
-        return true;
+        
+        $this->query_string = 'UPDATE ' . $table . ' SET ' . $fields . ' WHERE ' . $where;
+        $this->data = array_merge($this->data, $data);
+        return $this;
     }
 
     /**
      * numRows()
      * 
-     * @param string $table A name of a table
-     * @param string $where the "WHERE" query part !!!Needs!!! "WHERE" (WHERE username=:username) or (WHERE username=?)
-     * @param array $data Paramters to bind
-     * @return integer Counted Rows
+     * @param string 
+     * @param string
+     * @param array 
+     * @return integer
      */
     public function numRows($table, $where = null, $data = array()) {
         $sql = 'SELECT COUNT(*) FROM ' . $table . ' ' . $where;
@@ -124,13 +181,13 @@ class Database {
     /**
      * delete()
      * 
-     * @param string $table A name of a table
-     * @param string $where the "WHERE" query part doesn't need "WHERE" (username=:username) or (username=?)
-     * @param integer $limit
+     * @param string
+     * @param string
+     * @param array
      * @return true
      */
-    public function delete($table, $where, $data = array(), $limit = 1) {
-        $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where . ' LIMIT ' . $limit;
+    public function delete($table, $where, $data = array()) {
+        $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
         $this->_query($sql, $data);
         return true;
     }
@@ -138,35 +195,48 @@ class Database {
     /**
      * _query() - private
      *
-     * @param string $sql An SQL string
-     * @param array $data Paramters to bind
+     * @param string
+     * @param array
      * @return Query string
      */
-    private function _query($sql, $data) {
+    private function _query($sql = null, $data = array())
+    {
         $query = $this->pdo->prepare($sql);
+        
         $value_type = NULL;
         foreach ($data as $key => $value) {
             if (is_null($value_type)) {
                 switch ($value) {
                     case is_int($value):
-                        $value_type = PDO::PARAM_INT;
+                        $value_type = \PDO::PARAM_INT;
                         break;
                     case is_bool($value):
-                        $value_type = PDO::PARAM_BOOL;
+                        $value_type = \PDO::PARAM_BOOL;
                         break;
                     case is_null($value):
-                        $value_type = PDO::PARAM_NULL;
+                        $value_type = \PDO::PARAM_NULL;
                         break;
                     default:
-                        $value_type = PDO::PARAM_STR;
+                        $value_type = \PDO::PARAM_STR;
+                        break;
                 }
             }
             $key = trim($key, ':');
             $query->bindValue(':' . $key, $value, $value_type);
         }
 
-        $query->execute();
+        return $query->execute();
+    }
+    
+    public function execute($fetch = false, $mode = \PDO::FETCH_ASSOC)
+    {
+        $query = $this->_query($this->query_string, $this->data);
+        
+        if($fetch === true) {
+            $query = $query->fetchAll($mode);
+        }
+        
         return $query;
     }
-
+    
 }
