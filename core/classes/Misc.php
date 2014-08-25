@@ -2,7 +2,7 @@
 
 class Misc {
     
-    private static $db = Database::getInstance()->connect('127.0.0.1','sa','sql_pass','MuOnline');
+    //private static $db = Database::getInstance()->connect('127.0.0.1','sa','sql_pass','MuOnline');
 
     public static function character_class($value, $view=0)
     {

@@ -38,13 +38,15 @@ class Autoloader {
      */
     public function loadClass($className) {
         if ($className) {
-            $components = explode($this->_namespaceSeparator, $className);
-            $folder = $components[1];
-            $file = ucfirst($components[2] . $this->_fileExtension);
-            $filepath = $folder . DIRECTORY_SEPARATOR . $file;
+            $components = preg_split("/\\\\/", $className, -1, PREG_SPLIT_NO_EMPTY);
+            ;
+            $file = ucfirst(end($components) . $this->_fileExtension);
+            unset($components[count($components) - 1], $components[0]);
+            $path = implode(DIRECTORY_SEPARATOR, $components);
+            $filepath = $path . DIRECTORY_SEPARATOR . $file;
 
-            if (!is_dir($folder) || !is_readable($filepath) || !file_exists($filepath)) {
-                throw new \Exception("Couldn't load the requested class.", 404);
+            if (!is_dir($path) || !is_readable($filepath) || !file_exists($filepath)) {
+                throw new \Exception("Couldn't load the requested class: {$filepath}", 404);
             }
 
             require $filepath;
