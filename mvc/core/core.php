@@ -12,7 +12,6 @@
     
     Autoloader::setAliases(array(
         'MSSQL'             => 'Core\\Classes\\DB\\MSSQL',
-        'MySQL'             => 'Core\\Classes\\DB\\MySQL',
         'Controller'        => 'Core\\Classes\\CoreController',
         'HttpRequest'       => 'Core\\Classes\\HttpRequest',
         'Model'             => 'Core\\Classes\\CoreModel',
