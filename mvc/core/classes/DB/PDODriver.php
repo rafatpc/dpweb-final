@@ -8,12 +8,12 @@ class PDODriver extends \PDO
     
     public function __construct()
     {
-	$username = \Config::get('database.username');
-	$password = \Config::get('database.password');
-	$dsn = \Config::get('database.dsn');
+    	$username = \Config::get('database.username');
+    	$password = \Config::get('database.password');
+    	$dsn = \Config::get('database.dsn');
         $options = \Config::get('database.options');
         
-        parent::__construct($dsn, $username, $password, $options);
+    	parent::__construct($dsn, $username, $password, $options);
     }
     
     
@@ -42,50 +42,17 @@ class PDODriver extends \PDO
         return $this;
     }
     
-    public function insert($table, $data = array())
+    public function build($fetch = true, $fetch_mode = \PDO::FETCH_ASSOC)
     {
-        $params = array_change_key_case($data, CASE_LOWER);
+        $stmt = $this->prepare($this->query);
         
-        $this->query = 'INSERT INTO ' . $table;
-        $this->query .= " ([".implode("], [", array_keys($data))."])";
-        $this->query .= " VALUES (:" . implode(", :", array_keys($params)) . ") ";
-        
-        $this->params = array_merge($this->params, $params);
-        
-        return $this;
-    }
-    
-    public function update($table, $data = array())
-    {
-        $params = array_change_key_case($data, CASE_LOWER);
-        
-        $this->query = 'UPDATE ' . $table . ' SET ';
-        $sets = null; 
-        foreach(array_keys($data) as $key) {
-            $sets .= $key. '=:'. strtolower($key) .', ';
+        foreach ($this->params as $key => $value) {
+            $stmt->bindValue($key, $value);
         }
-        $this->query .= rtrim($sets, ', ');
-        $this->params = array_merge($this->params, $params);
         
-        return $this;
-    }
-    
-    public function build($fetch = false, $fetch_mode = \PDO::FETCH_ASSOC)
-    {
-        try {
-            $stmt = $this->prepare($this->query);
-
-            foreach ($this->params as $key => $value) {
-                $key = trim($key, ':');
-                $stmt->bindValue(':' . $key, $value);
-            }
-
-            $stmt->execute();
-            if($fetch === true) {
-                return $stmt->fetchAll($fetch_mode);
-            }
-        } catch (\Exception $err) {
-            throw new \Exception($err->getMessage(), (int) $err->getCode());
+        $stmt->execute();
+        if($fetch === true) {
+            return $stmt->fetchAll($fetch_mode);
         }
         return $stmt;
     }
