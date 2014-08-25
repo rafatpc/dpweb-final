@@ -11,7 +11,8 @@
     $loader->addNamespace('Core\Classes', CORE. 'classes');
     
     Autoloader::setAliases(array(
-        'MSSQL'             => 'Core\\Classes\\DB\\MSSQL',
+        'PDODriver'         => 'Core\\Classes\\DB\\PDODriver',
+        'Config'            => 'Core\\Classes\\Config',
         'Controller'        => 'Core\\Classes\\CoreController',
         'HttpRequest'       => 'Core\\Classes\\HttpRequest',
         'Model'             => 'Core\\Classes\\CoreModel',
