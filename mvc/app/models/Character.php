@@ -1,6 +1,6 @@
 <?php
 
-class Character extends Model 
+class Character extends Model
 {
     function getAll()
     {
