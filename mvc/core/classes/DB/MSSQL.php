@@ -56,7 +56,7 @@ class MSSQL extends \PDO
         $stmt = mssql_query($query);
 
         if($fetch === true) {
-    	 	$fetching = 'mssql_' . $fetch_mode();
+     		$fetching = 'mssql_' . $fetch_mode();
             return $fetching($stmt);
         }
         return $stmt;
