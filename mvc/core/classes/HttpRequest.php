@@ -7,7 +7,7 @@ class HttpRequest {
     protected $sub_folder = null;
     protected $uri_parts = array();
     protected $controller = null;
-    protected $current;
+    protected $current = null;
     protected $action = null;
     protected $params = array();
 
@@ -31,7 +31,7 @@ class HttpRequest {
     {
         $string = $_SERVER['REQUEST_URI'];
         
-        if(preg_match('/[^a-zA-Z0-9\/]/', $string)) {
+        if(preg_match('/[^a-zA-Z0-9_\/]/', $string)) {
             throw new \Exception('The requested page is not found.',404);
         }
         
