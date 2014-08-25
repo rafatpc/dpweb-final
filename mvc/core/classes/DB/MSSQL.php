@@ -10,7 +10,7 @@ class MSSQL extends \PDO
     {
 	$host = '127.0.0.1';
 	$username = 'sa';
-	$password = 'ahahah';
+	$password = 'sql_pass';
 	$database = 'MuOnline';
         
         $options = array(
@@ -36,10 +36,14 @@ class MSSQL extends \PDO
     
     public function where($field, $sign, $value)
     {
-        $field_value = lcfirst($field);
+        $field_value = strtolower($field);
+        
         $params = array($field_value => $value);
+        
         $this->params = array_merge($this->params, $params);
+        
         $this->query = $this->query . ' WHERE ' . $field . $sign . ':' . $field_value;
+        
         return $this;
     }
     
