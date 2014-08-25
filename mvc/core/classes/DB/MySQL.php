@@ -9,8 +9,8 @@ class MySQL extends \PDO
     public function __construct()
     {
 	$host = '127.0.0.1';
-	$username = 'thethird';
-	$password = 'warscall';
+	$username = 'root';
+	$password = 'toor';
 	$database = 'test';
         
         $options = array(
