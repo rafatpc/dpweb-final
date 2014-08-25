@@ -4,7 +4,7 @@
     
     class_alias('\Core\Classes\Autoloader', 'Autoloader');
     
-    $loader = new Autoloader;
+    $loader = new Autoloader();
 
     $loader->register();
 
