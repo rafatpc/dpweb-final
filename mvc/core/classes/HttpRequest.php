@@ -32,7 +32,7 @@ class HttpRequest {
         $string = $_SERVER['REQUEST_URI'];
         
         if(preg_match('/[^a-zA-Z0-9\/]/', $string)) {
-            throw new Exception('The requested page is not found.',404);
+            throw new \Exception('The requested page is not found.',404);
         }
         
         if (strpos($string, $this->sub_folder) === 0){
