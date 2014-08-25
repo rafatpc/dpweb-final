@@ -3,48 +3,47 @@
 <head>
 <title><?php echo $error['title']; ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="icon" href="<?php echo URL; ?>/images/favicon.png" />
 <style type="text/css">
 *{
-	margin:0;
-	padding:0;
-	border:0;
+    margin:0;
+    padding:0;
+    border:0;
 }
 body {
-	background:#ededed;
-	font-family:sans-serif;
-	margin: 40px 0 10px;
-	color: #555;
+    background:#ededed;
+    font-family:sans-serif;
+    margin: 40px 0 10px;
+    color: #555;
 }
 hr {
     border-bottom: 1px solid #eee;
 }
 a {
-	color: #000;
-	font-weight: normal;
-	text-decoration:none;
+    color: #000;
+    font-weight: normal;
+    text-decoration:none;
 }
 a:hover, a:active {
-	text-decoration:underline;
+    text-decoration:underline;
 }
 h1 {
-	border-bottom: 1px solid #ccc;
-	font-size: 19px;
-	font-weight: normal;
-	padding: 14px 15px 10px;
-	background-color:#f5f5f5;
+    border-bottom: 1px solid #ccc;
+    font-size: 19px;
+    font-weight: normal;
+    padding: 14px 15px 10px;
+    background-color:#f5f5f5;
 }
 
 .container {
-	width:90%;
-	margin:auto;
-	border:1px solid #ccc;
-	background-color:#f5f5f5;
+    width:90%;
+    margin:auto;
+    border:1px solid #ccc;
+    background-color:#f5f5f5;
 }
 
 p {
-	background-color:#fff;
-	padding: 12px 15px;
+    background-color:#fff;
+    padding: 12px 15px;
 }
 p.error { color:#840000; }
 p.success { color:#006700; }

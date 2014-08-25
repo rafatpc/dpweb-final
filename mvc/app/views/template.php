@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>TEMPLATE</title>
+    <?php echo Html::link('public/css/style.css'); ?>
 </head>
 <body>
-    <?php echo $content; ?>
+    <div class="content">
+        <?php echo $content; ?>
+    </div>
 </body>
 </html>
