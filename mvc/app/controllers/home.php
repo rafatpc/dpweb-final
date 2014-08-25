@@ -9,8 +9,10 @@ class Home extends Controller
     
     public function characters()
     {
-        $this->loadModel('Test');
-        $data['chars'] = $this->models['test']->select('Name');
+        $character = $this->model('Character');
+        
+        $data['chars'] = $character->getAll(); // also can use $this->model('Character')->getAll();
+        
         \View::make('characters', $data);
     }
 }
