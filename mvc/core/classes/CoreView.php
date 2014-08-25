@@ -2,8 +2,8 @@
 
 namespace Core\Classes;
 
-class CoreView {
-
+class CoreView 
+{
     public $views_folder = null;
     public $file_path = null;
     public $template = null;
