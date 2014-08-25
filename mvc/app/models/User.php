@@ -15,8 +15,8 @@ class User extends Model
     public function update()
     {
         $this->db->update('users',array(
-            'USERname' => 'Jack',
-            'PASSWORD' => 'jacks',
+            'USErname' => 'Jack',
+            'PAsswORD' => 'jacks',
             'EMail' => 'jack@mail.com'
         ))->where('user_id','=', 1)->build(false);
         return true;
