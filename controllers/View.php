@@ -32,19 +32,28 @@ class View {
 
     public function render($view, $data = array()) {
         $smarty = $this->smarty;
-        $view_file = $view . '.tpl';
+        $viewFile = $view . '.tpl';
         $data['layout'] = $this->layoutData;
-        
-        if (!$smarty->templateExists($view_file)) {
-            $view_file = '404.tpl';
+
+        if (!$smarty->templateExists($viewFile)) {
+            $viewFile = '404.tpl';
         }
 
+        $this->variableAssign($data, $viewFile);
+        $this->dispatch();
+    }
+
+    public function variableAssign($data, $viewFile) {
         foreach ($data as $key => $value) {
-            $smarty->assign($key, $value);
+            $this->smarty->assign($key, $value);
         }
+        
+        $this->smarty->assign('viewFileTPL', $viewFile);
+        $this->smarty->assign('usedMemory', number_format(((memory_get_usage() / 1024) / 1024), 2, '.', ' '));
+    }
 
-        $smarty->assign('viewFileTPL', $view_file);
-        $smarty->display('index.tpl');
+    public function dispatch() {
+        $this->smarty->display('index.tpl');
     }
 
     /**
