@@ -49,6 +49,7 @@ class View {
         }
         
         $this->smarty->assign('viewFileTPL', $viewFile);
+        $this->smarty->assign('sess', $_SESSION);
         $this->smarty->assign('usedMemory', number_format(((memory_get_usage() / 1024) / 1024), 2, '.', ' '));
     }
 
