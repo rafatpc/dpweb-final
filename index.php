@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once './application/DPWeb.php';
 require_once './application/libs/Smarty/Smarty.class.php';
 
