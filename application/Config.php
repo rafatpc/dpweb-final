@@ -40,7 +40,8 @@ class Config {
         if (self::$instance === null) {
             self::$instance = new Config;
         }
-
+        
         return self::$instance;
     }
+
 }

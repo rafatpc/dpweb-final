@@ -8,9 +8,8 @@ class Database__QB {
     private $instance = NULL;
     private $query_string = NULL;
     private $data = NULL;
-
+    
     private function __construct() {
-        
     }
 
     public static function getInstance() {

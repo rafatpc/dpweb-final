@@ -68,7 +68,7 @@ class Database {
             mssql_close($this->dblink[$i]);
         }
     }
-    
+
     /**
      * 
      * @return Database
