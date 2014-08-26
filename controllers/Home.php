@@ -5,7 +5,7 @@ namespace DPWeb\Controllers;
 class Home {
 
     public function index() {
-        echo "Home view to be loaded<br>";
+        View::getInstance()->render('home', array("Hello, how are you?"));
     }
 
 }
