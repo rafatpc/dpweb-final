@@ -17,6 +17,12 @@ class DPWeb {
      * @var Config
      */
     public $config = null;
+
+    /**
+     *
+     * @var View
+     */
+    public $view = null;
     public static $instance = null;
 
     private function __construct() {
@@ -24,6 +30,7 @@ class DPWeb {
         $this->config = \DPWeb\Application\Config::getInstance();
         new \DPWeb\Application\FrontController();
         $this->db = \DPWeb\Application\Database::getInstance();
+        $this->view = \DPWeb\Controllers\View::getInstance();
     }
 
     /**
