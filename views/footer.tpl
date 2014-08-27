@@ -1,8 +1,9 @@
                     <br /><br />
-                    Wohooo! We have used just {$usedMemory}MB memory!
+                    Wohooo! We have used just {$usedMemory}MB memory!<br />
+                    And the PHP was proceeded in {$loadtime} seconds!<br />
                     </div>
                     <div id="content-footer">
-                        <img src="{$layout['imgs']}content-footer.png" alt="Content Footer" />
+                        <img src="{$layout['baseurl']}{$layout['imgs']}content-footer.png" alt="Content Footer" />
                     </div>
                 </section>
             </div>

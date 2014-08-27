@@ -5,6 +5,7 @@ namespace DPWeb\Controllers;
 class View {
 
     public $layoutData = array();
+    private $templateData = array();
     public $smarty = null;
     public static $instance = null;
 
@@ -24,13 +25,17 @@ class View {
         }
 
         $this->smarty = $smarty;
+        $this->dpcustom();
+    }
+
+    public function setError($value) {
+        $this->layoutData['errors'] = $value;
     }
 
     public function render($view, $data = array()) {
         $smarty = $this->smarty;
-        $this->dpcustom();
-        
         $viewFile = $view . '.tpl';
+        $this->setTemplateData();
         $data['layout'] = $this->layoutData;
 
         if (!$smarty->templateExists($viewFile)) {
@@ -38,38 +43,48 @@ class View {
         }
 
         $this->variableAssign($data, $viewFile);
+
+        $time = explode(' ', microtime());
+        $diff = $time[1] + $time[0];
+        $total_time = round(($diff - STARTTIME), 4);
+
+        $smarty->assign('loadtime', $total_time);
         $this->dispatch();
     }
 
     public function dpcustom() {
         $this->layoutData = array(
-            'title' => 'DarkPowerMu',
-            'sess' => $_SESSION,
+            'title' => 'DarkPowerMu - Season 3 Episode 1 MuOnline',
             'links' => array(
-                'Home' => './home',
-                'Register' => './register',
-                'Rankings' => './rankings',
-                'Download' => './download',
-                'Castle Siege' => './castlesiege',
-                'Market' => './market',
-                'Webshop' => './webshop'
+                'Home' => 'home',
+                'Register' => 'register',
+                'Rankings' => 'rankings',
+                'Download' => 'download',
+                'Castle Siege' => 'castlesiege',
+                'Market' => 'market',
+                'Webshop' => 'webshop'
             ),
             'navlinks' => array(
-                'Home' => './home',
-                'Events' => './events',
-                'Hall of Fame' => '/hof',
+                'Home' => 'home',
+                'Events' => 'events',
+                'Hall of Fame' => 'hof',
             ),
-            'title' => 'DarkPowerMu - Season 3 Episode 1 MuOnline',
-            'imgs' => "./templates/dpcustom/images/",
-            'css' => "./templates/dpcustom/css/",
             'servername' => 'DarkPowerMu',
             'online' => 20,
-            'limit' => 200, 'news' => array(
+            'limit' => 200,
+            'news' => array(
                 'Test of the news 1' => 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ',
                 'Test of the news 2' => 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ',
                 'Test of the news 3' => 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ',
             )
         );
+    }
+
+    public function setTemplateData() {
+        $this->layoutData['sess'] = $_SESSION;
+        $this->layoutData['baseurl'] = '//' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . '/';
+        $this->layoutData['imgs'] = "templates/dpcustom/images/";
+        $this->layoutData['css'] = "templates/dpcustom/css/";
     }
 
     public function variableAssign($data, $viewFile) {
