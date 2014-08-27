@@ -49,5 +49,14 @@ class Autoloader {
             require $filepath;
         }
     }
+    
+    public static function setAliases($aliases)
+    {
+        foreach($aliases  as $alias => $class)
+        {
+            class_alias($class, $alias);
+        }
+        return true;
+    }
 
 }
