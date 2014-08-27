@@ -158,7 +158,7 @@ aside #user input[type="text"], aside #user input[type="password"] {
     height: 30px;
 }
 
-aside #user input[type="submit"] {
+aside #user #login {
     background-image: url('../images/login.png') !important;
     border: none;
     width: 58px;

@@ -24,14 +24,12 @@ class View {
         }
 
         $this->smarty = $smarty;
-
-        $this->layoutData = array(
-            'title' => 'DarkPowerMu'
-        );
     }
 
     public function render($view, $data = array()) {
         $smarty = $this->smarty;
+        $this->dpcustom();
+        
         $viewFile = $view . '.tpl';
         $data['layout'] = $this->layoutData;
 
@@ -43,13 +41,43 @@ class View {
         $this->dispatch();
     }
 
+    public function dpcustom() {
+        $this->layoutData = array(
+            'title' => 'DarkPowerMu',
+            'sess' => $_SESSION,
+            'links' => array(
+                'Home' => './home',
+                'Register' => './register',
+                'Rankings' => './rankings',
+                'Download' => './download',
+                'Castle Siege' => './castlesiege',
+                'Market' => './market',
+                'Webshop' => './webshop'
+            ),
+            'navlinks' => array(
+                'Home' => './home',
+                'Events' => './events',
+                'Hall of Fame' => '/hof',
+            ),
+            'title' => 'DarkPowerMu - Season 3 Episode 1 MuOnline',
+            'imgs' => "./templates/dpcustom/images/",
+            'css' => "./templates/dpcustom/css/",
+            'servername' => 'DarkPowerMu',
+            'online' => 20,
+            'limit' => 200, 'news' => array(
+                'Test of the news 1' => 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ',
+                'Test of the news 2' => 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ',
+                'Test of the news 3' => 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ',
+            )
+        );
+    }
+
     public function variableAssign($data, $viewFile) {
         foreach ($data as $key => $value) {
             $this->smarty->assign($key, $value);
         }
-        
+
         $this->smarty->assign('viewFileTPL', $viewFile);
-        $this->smarty->assign('sess', $_SESSION);
         $this->smarty->assign('usedMemory', number_format(((memory_get_usage() / 1024) / 1024), 2, '.', ' '));
     }
 

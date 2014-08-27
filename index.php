@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+date_default_timezone_set('Europe/Sofia');
+header('Content-type: text/html; charset=utf-8');
 
 require_once './application/DPWeb.php';
 require_once './application/libs/Smarty/Smarty.class.php';

@@ -1,6 +1,6 @@
 <?php
 
-namespace DPWeb\Models;
+namespace DPWeb\Models\User;
 
 class Reset {
 
