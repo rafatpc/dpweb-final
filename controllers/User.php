@@ -5,7 +5,7 @@ namespace DPWeb\Controllers;
 class User {
 
     public function index() {
-        echo "Just load the user view...<br>";
+        View::getInstance()->render('home');
     }
 
     public function reset($character = null) {
@@ -14,10 +14,6 @@ class User {
         } else {
             $this->resetView();
         }
-    }
-
-    public function resetView() {
-        include_once './views/User/reset.php';
     }
 
 }

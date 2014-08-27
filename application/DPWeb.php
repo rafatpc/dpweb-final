@@ -31,8 +31,8 @@ class DPWeb {
         new \DPWeb\Application\FrontController();
         $this->db = \DPWeb\Application\Database::getInstance();
         $this->view = \DPWeb\Controllers\View::getInstance();
-        
-        if($this->config->main['development']){
+
+        if ($this->config->main['development']) {
             error_reporting(E_ERROR | E_PARSE | E_NOTICE);
         } else {
             error_reporting(0);
@@ -50,4 +50,5 @@ class DPWeb {
 
         return self::$instance;
     }
+
 }

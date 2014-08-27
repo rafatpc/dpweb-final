@@ -6,6 +6,7 @@ class Database {
 
     private $cnf = null;
     private $dblink = array();
+    public $escape = array(';', '\'', '--', '/', '*', '[', ']', '%', '\\');
     public static $instance = null;
 
     private function __construct() {
@@ -61,6 +62,17 @@ class Database {
         $result = mssql_num_rows($mssql_resource);
 
         return $result;
+    }
+    
+    public function escape($string) {
+        $clone = $string;
+        $string = str_replace($this->escape, '', strtolower($string));
+        
+        if(strtolower($clone) === $string){
+            return $clone;
+        } else {
+            return false;
+        }
     }
 
     public function __destruct() {
