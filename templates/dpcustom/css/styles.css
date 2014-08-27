@@ -229,6 +229,13 @@ section #content * {
     color: #aa8c74;
 }
 
+section #content #errors > div {
+    background-color: #d40000;
+    border: 1px solid #700000;
+    padding: 5px 10px 5px 10px;
+    color: #FFFFFF;
+}
+
 section #content-footer {
     margin-top: -3px;
 }
