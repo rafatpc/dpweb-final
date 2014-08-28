@@ -26,6 +26,12 @@ class View {
         $this->smarty = $smarty;
         $this->dpcustom();
     }
+    
+    public function setData($data = array()) {
+        $this->layoutData = array_merge($this->layoutData, $data);
+        return $this; // in order to chain 
+        // example: See Controllers/test.php
+    }
 
     public function setError($value) {
         $this->layoutData['errors'] = $value;
