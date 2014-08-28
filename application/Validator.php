@@ -12,7 +12,7 @@ class Validator {
                 //TODO
                 return preg_match_all('/([;\\/*\[\]%\',#+^()<>|"\.!$&@])/', $str, $matches);
         }
-        
+
         return null;
     }
 
@@ -22,6 +22,10 @@ class Validator {
         } else {
             return false;
         }
+    }
+
+    public static function session() {
+        return true;
     }
 
 }

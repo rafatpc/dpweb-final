@@ -3,7 +3,7 @@
     <head>
         <title>{$layout['title']}</title>
         <link rel="shortcut icon" href="{$layout['baseurl']}{$layout['imgs']}favicon.ico">
-        <link rel="stylesheet" href="{$layout['baseurl']}{$layout['css']}template.min.css" />
+        <link rel="stylesheet" href="{$layout['baseurl']}{$layout['css']}template.css" />
         <link rel="stylesheet" href="{$layout['baseurl']}{$layout['css']}styles.css" />
         <script type="text/javascript" src="{$layout['baseurl']}{$layout['js']}jquery.min.js"></script>
         <script type="text/javascript" src="{$layout['baseurl']}{$layout['js']}scripts.js"></script>
