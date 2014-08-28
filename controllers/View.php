@@ -5,7 +5,6 @@ namespace DPWeb\Controllers;
 class View {
 
     public $layoutData = array();
-    private $templateData = array();
     public $smarty = null;
     public static $instance = null;
 
@@ -31,13 +30,19 @@ class View {
     public function setError($value) {
         $this->layoutData['errors'] = $value;
     }
+    
+    public function titleGenerator() {
+        //SHOULD BE UPDATE, I know :D
+        $this->layoutData['title'] = 'DarkPowerMu - Season 3 Episode 1 MuOnline :: ' . $_SERVER['REQUEST_URI'];
+    }
 
     public function render($view, $data = array()) {
         $smarty = $this->smarty;
         $viewFile = $view . '.tpl';
         $this->setTemplateData();
+        $this->titleGenerator();
         $data['layout'] = $this->layoutData;
-
+        
         if (!$smarty->templateExists($viewFile)) {
             $viewFile = '404.tpl';
         }
@@ -54,7 +59,6 @@ class View {
 
     public function dpcustom() {
         $this->layoutData = array(
-            'title' => 'DarkPowerMu - Season 3 Episode 1 MuOnline',
             'links' => array(
                 'Home' => 'home',
                 'Register' => 'register',

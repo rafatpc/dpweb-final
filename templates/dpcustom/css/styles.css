@@ -45,6 +45,7 @@
 }
 
 .character {
+    margin-bottom: 10px;
     width: 663px;
     height: 100px;
     border: 1px solid #1c1817;
@@ -54,9 +55,14 @@
 .character #class-image {
     background-color: #1a1511;
     float: left;
-    width: 97px;
+    width: 90px;
     height: 94px;
-    margin: 2px;
+    margin: 2px 5px 2px 5px;
+}
+
+.character #class-image img {
+    width: 93px;
+    height: 93px;
 }
 
 .character #character-info {
