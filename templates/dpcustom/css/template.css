@@ -43,11 +43,11 @@
 }
 
 .offline {
-    color: #d40000;
+    color: #d40000 !important;
 }
 
 .online {
-    color: #006f00;
+    color: #006f00 !important;
 }
 
 h1 {

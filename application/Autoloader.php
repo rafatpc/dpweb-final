@@ -11,6 +11,10 @@ class Autoloader {
      */
     public function __construct() {
         $this->register();
+        $this->setAliases(array(
+            '\DPWeb\Application\Validator' => 'Validator',
+            '\DPWeb\Models\User\Login' => 'Login'
+        ));
     }
 
     /**
@@ -50,11 +54,11 @@ class Autoloader {
         }
     }
 
-    public static function setAliases($aliases) {
-        foreach ($aliases as $alias => $class) {
+    public function setAliases($aliases) {
+        foreach ($aliases as $class => $alias) {
             class_alias($class, $alias);
         }
-        
+
         return true;
     }
 
