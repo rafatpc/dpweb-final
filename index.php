@@ -4,10 +4,8 @@ session_start();
 date_default_timezone_set('Europe/Sofia');
 header('Content-type: text/html; charset=utf-8');
 
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-define('STARTTIME', $time);
+$time = explode(' ', microtime());
+define('STARTTIME', ($time[1] + $time[0]));
 
 require_once './application/DPWeb.php';
 require_once './application/libs/Smarty/Smarty.class.php';
