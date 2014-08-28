@@ -2,16 +2,16 @@
     <h2>Account Options</h2>
     <ul>
         <li>
-            <a href="./user/overview">Account overview</a>
+            <a href="{$layout['baseurl']}user/overview">Account overview</a>
         </li>
         <li>
-            <a href="./user/edit/password">Change Password</a>
+            <a href="{$layout['baseurl']}user/edit/password">Change Password</a>
         </li>
         <li>
-            <a href="./user/edit/email">Change E-mail</a>
+            <a href="{$layout['baseurl']}user/edit/email">Change E-mail</a>
         </li>
         <li>
-            <a href="./logout.php" id="logout-submit">Logout</a>
+            <a href="{$layout['baseurl']}logout.php" id="logout-submit">Logout</a>
         </li>
     </ul>
 
