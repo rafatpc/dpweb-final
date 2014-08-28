@@ -36,7 +36,7 @@ class Autoloader {
     public function loadClass($className) {
         if ($className) {
             $components = preg_split("/\\\\/", $className, -1, PREG_SPLIT_NO_EMPTY);
-            
+
             $file = ucfirst(end($components) . '.php');
             unset($components[count($components) - 1], $components[0]);
             $path = implode(DIRECTORY_SEPARATOR, $components);
@@ -49,13 +49,12 @@ class Autoloader {
             require $filepath;
         }
     }
-    
-    public static function setAliases($aliases)
-    {
-        foreach($aliases  as $alias => $class)
-        {
+
+    public static function setAliases($aliases) {
+        foreach ($aliases as $alias => $class) {
             class_alias($class, $alias);
         }
+        
         return true;
     }
 
