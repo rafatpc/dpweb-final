@@ -11,14 +11,15 @@ class FrontController {
     public function __construct() {
         define('DPWEB_BASE_DIRECTORY', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
         define('DPWEB_REQUEST', substr($_SERVER['REQUEST_URI'], strlen(DPWEB_BASE_DIRECTORY)));
-
+        $rest = explode('?', DPWEB_REQUEST);
+        define('RESTFUL_URI', $rest[0]);
 
         $this->setUpFrontController();
         $this->executeController();
     }
 
     function setUpFrontController() {
-        $components = explode('/', DPWEB_REQUEST, 3);
+        $components = explode('/', RESTFUL_URI, 3);
 
         if (isset($components[0]) && !empty($components[0])) {
             $this->controller = $components[0];
@@ -34,8 +35,8 @@ class FrontController {
     }
 
     function executeController() {
-        $namespace = '\\DPWeb\\Controllers\\' . ucfirst($this->controller);
-        $instance = new $namespace();
+        $class = '\\DPWeb\\Controllers\\' . ucfirst($this->controller);
+        $instance = new $class();
         
         if($this->params){
             call_user_func(array($instance, $this->method), $this->params); 
