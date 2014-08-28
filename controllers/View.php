@@ -83,6 +83,7 @@ class View {
     public function setTemplateData() {
         $this->layoutData['sess'] = $_SESSION;
         $this->layoutData['baseurl'] = '//' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . '/';
+        $this->layoutData['js'] = "templates/dpcustom/javascript/";
         $this->layoutData['imgs'] = "templates/dpcustom/images/";
         $this->layoutData['css'] = "templates/dpcustom/css/";
     }
