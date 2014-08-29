@@ -2,28 +2,28 @@
 
 namespace DPWeb\Models\User;
 
-class Login {
+class Login extends \DefaultModel {
 
-    public function __construct($user, $pass) {
+    public function loginUser($user, $pass) {
         $db = \DPWeb\Application\Database::getInstance();
         $view = \DPWeb\Controllers\View::getInstance();
         
         $user = $db->escape($user);
         $pass = $db->escape($pass);
 
-        if ($user === false || \DPWeb\Application\Validator::filter($user) != 0) {
+        if ($user === false || $this->validator->filter($user) != 0) {
             $view->setError('Invalid username!');
         }
 
-        if ($pass === false || \DPWeb\Application\Validator::filter($pass) != 0) {
+        if ($pass === false || $this->validator->filter($pass) != 0) {
             $view->setError('Invalid password!');
         }
 
-        if (!\DPWeb\Application\Validator::rstrlen($user)) {
+        if (!$this->validator->rstrlen($user)) {
             $view->setError('The lenght of the username should be between 4 and 10 characters!');
         }
 
-        if (!\DPWeb\Application\Validator::rstrlen($pass)) {
+        if (!$this->validator->rstrlen($pass)) {
             $view->setError('The lenght of the password should be between 4 and 10 characters!');
         }
 

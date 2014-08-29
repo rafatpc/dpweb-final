@@ -4,15 +4,10 @@
     </div>
 {/if}
 
-
-{*}
-{if $viewFileTPL|strpos:"characters" !== false}
-    ok ok  ok 
-{/if}
-
-{$viewFileTPL}
-{/*}
-
+{$currentPage = "/"|explode:$smarty.server.REQUEST_URI}
+{assign var="tplPath" value="./views/user/`$currentPage[3]`.tpl"}
+{assign var="tplFile" value="./`$currentPage[3]`.tpl"}
+{$opt = $currentPage[3]}
 {foreach from=$characters key=k item=r}
     <div class="character clearfix">
         <div id="class-image">
@@ -51,4 +46,7 @@
             </table>
         </div>
     </div>
+    {if file_exists($tplPath)}
+        {include file=$tplFile}
+    {/if}
 {/foreach}

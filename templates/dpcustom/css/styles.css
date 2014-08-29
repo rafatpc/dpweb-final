@@ -1,4 +1,4 @@
-input.default {
+input {
     padding: 5px;
     width: 272px;
     border: 1px solid #1c1817;
@@ -10,19 +10,18 @@ input.default {
     box-shadow: 0px 0px 4px #000000;
 }
 
-input.default:focus {
+input:focus {
     background-color: #171310;
 }
 
 input[type="submit"], input[type="button"] {
     padding: 5px;
-    width: 172px;
+    width: auto;
     border: 1px solid #1c1817;
     background-color: #13100d;
     color: #a16a00 !important;
     text-shadow: 2px 2px 2px #000000;
     display: block;
-    margin: 15px 0px;
     cursor: pointer;
     box-shadow: 0px 0px 4px #000000;
 }
@@ -40,6 +39,10 @@ p {
 form {
     display: inline-block;
     margin-left: 20px;
+}
+
+#login-box form {
+    margin-left: 0px;
 }
 
 label {
@@ -132,33 +135,33 @@ label {
     float: left;
 }
 
-.character #character-info table {
+table {
     width: 100%;
 }
 
-.character #character-info table tr {
+table tr {
     background-color: #000000;
 }
 
-.character #character-info table tr:nth-child(2) {
+table tr:nth-child(even) {
     background-color: #1a1511;
 }
 
-.character #character-info table tr:nth-child(2) td {
-    color: #aa8c74;
+table tr:nth-child(even) td {
+    color: #aa8c74 !important;
     text-shadow: 2px 2px 3px #000000;
 }
 
-.character #character-info table td {
+table td {
     width: 33%;
     height: 30px;
-    color: #a16a00;
-    font-size: 9pt;
-    padding-left: 5px;
+    color: #a16a00 !important;
+    font-size: 9pt !important;
+    padding: 0px 5px;
     text-shadow: 2px 1px 3px rgba(170, 140, 116, 0.5);
 }
 
-.character #character-info table td h2 {
+table td h2 {
     font-weight: bold;
     display: inline-block;
 }
@@ -166,4 +169,58 @@ label {
 .char-status {
     font-size: 8pt !important;
     text-transform: lowercase;
+}
+
+.user-option-box {
+    width: 663px;
+    border: 1px solid #1c1817;
+    border-top-color: #13100d;
+    background-color: #13100d;
+    color: #a16a00 !important;
+    text-shadow: 2px 2px 2px #000000;
+    margin: -20px 0px 20px 0px;
+    padding-bottom: 2px;
+}
+
+.user-option-box input {
+    padding: 0px 10px;
+    margin: 0px 5px -2px 5px;
+    font-size: 9pt !important;
+    height: 26px;
+}
+
+.user-option-box form {
+    margin: 0px;
+}
+
+.user-option-box table {
+    width: 660px !important;
+}
+
+.user-option-box table td {
+    background-color: #1a1511 !important;
+    text-shadow: 2px 2px 2px #000000;
+    color: #aa8c74 !important;
+}
+
+.user-option-box table td img {
+    margin-bottom: -3px;
+}
+
+.user-option-box table td:nth-child(1) {
+    width: 99px !important;
+    background-color: #13100d !important;
+    text-align: center;
+}
+
+.user-option-box table td:nth-child(2) {
+    width: 192px !important;
+}
+
+.user-option-box table td:nth-child(3) {
+    width: 191px !important;
+}
+
+.user-option-box table td:nth-child(4) {
+    width: 192px !important;
 }

@@ -2,7 +2,7 @@
 
 namespace DPWeb\Application;
 
-class DefaultController {
+class DefaultModel {
 
     /**
      *
@@ -21,7 +21,7 @@ class DefaultController {
      * @var View
      */
     public $view = null;
-
+    
     /**
      *
      * @var Validator
@@ -33,23 +33,6 @@ class DefaultController {
         $this->config = \DPWeb\Application\Config::getInstance();
         $this->view = \DPWeb\Controllers\View::getInstance();
         $this->validator = new \DPWeb\Application\Validator;
-    }
-
-    /**
-     * 
-     * @return \DPWeb\Models\User\Account
-     */
-    public function checkSession() {
-        if (!isset($_SESSION['dpw_user']) || !isset($_SESSION['dpw_pass']) || !$this->validator->session()) {
-            if (isset($_SESSION['dpw_user']) || isset($_SESSION['dpw_pass'])) {
-                session_destroy();
-            }
-
-            header('Location: ' . DPWEB_BASE_DIRECTORY);
-            exit;
-        }
-
-        return new \DPWeb\Models\User\Account();
     }
 
 }
