@@ -171,30 +171,41 @@ table td h2 {
     text-transform: lowercase;
 }
 
+.form-holder {
+    float: left;
+    width: 100px;
+    text-align: center;
+    margin: 2px 0px;
+}
+
+.table-holder {
+    width: 560px;
+    float: left;
+}
+
 .user-option-box {
     width: 663px;
     border: 1px solid #1c1817;
-    border-top-color: #13100d;
+    border-top: 0px;
     background-color: #13100d;
     color: #a16a00 !important;
     text-shadow: 2px 2px 2px #000000;
     margin: -20px 0px 20px 0px;
-    padding-bottom: 2px;
 }
 
 .user-option-box input {
     padding: 0px 10px;
-    margin: 0px 5px -2px 5px;
+    margin: 2px 5px 0px 5px;
     font-size: 9pt !important;
     height: 26px;
 }
 
 .user-option-box form {
-    margin: 0px;
+    margin-left: 0px;
 }
 
 .user-option-box table {
-    width: 660px !important;
+    width: 560px !important;
 }
 
 .user-option-box table td {
@@ -207,20 +218,17 @@ table td h2 {
     margin-bottom: -3px;
 }
 
-.user-option-box table td:nth-child(1) {
-    width: 99px !important;
-    background-color: #13100d !important;
-    text-align: center;
-}
-
-.user-option-box table td:nth-child(2) {
-    width: 192px !important;
-}
-
-.user-option-box table td:nth-child(3) {
-    width: 191px !important;
-}
-
-.user-option-box table td:nth-child(4) {
-    width: 192px !important;
+.disabled-button {
+    margin: 0px auto;
+    padding: 4px 5px 5px 5px;
+    width: 62px;
+    height: 26px;
+    font-size: 9pt !important;
+    border: 1px solid #1c1817;
+    background-color: #13100d;
+    color: #444444 !important;
+    text-shadow: 0px 0px 0px #000000;
+    display: block;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px #000000;
 }
