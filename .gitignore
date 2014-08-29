@@ -1,3 +1,4 @@
 ### Ignore Smarty Files ###
 views/compiled/
 views/cache/
+nbproject/
