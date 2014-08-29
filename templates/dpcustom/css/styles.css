@@ -205,13 +205,14 @@ table td h2 {
 }
 
 .user-option-box table {
-    width: 560px !important;
+    width: auto !important;
 }
 
 .user-option-box table td {
     background-color: #1a1511 !important;
     text-shadow: 2px 2px 2px #000000;
     color: #aa8c74 !important;
+    width: 184px;
 }
 
 .user-option-box table td img {
@@ -231,4 +232,29 @@ table td h2 {
     display: block;
     cursor: pointer;
     box-shadow: 0px 0px 4px #000000;
+}
+
+.points-added {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    border-top: 0px;
+    display: none;
+}
+
+.points-added .left-column input[type="text"] {
+    width: 160px;
+}
+
+.left-column {
+    margin-right: 40px;
+    float: left;
+}
+
+.left-column span span {
+    color: #aa8c74 !important;
+}
+
+.left-column span {
+    color: #605454 !important;
+    font-size: 8pt !important;
 }
