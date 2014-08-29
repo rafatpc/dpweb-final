@@ -31,7 +31,7 @@ class DefaultModel {
     public function __construct() {
         $this->db = \DPWeb\Application\Database::getInstance();
         $this->config = \DPWeb\Application\Config::getInstance();
-        $this->view = \DPWeb\Controllers\View::getInstance();
+        $this->view = \DPWeb\Application\View::getInstance();
         $this->validator = new \DPWeb\Application\Validator;
     }
 

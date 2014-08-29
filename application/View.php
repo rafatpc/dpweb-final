@@ -1,6 +1,6 @@
 <?php
 
-namespace DPWeb\Controllers;
+namespace DPWeb\Application;
 
 class View {
 
