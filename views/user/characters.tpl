@@ -1,3 +1,18 @@
+{if !$characters}
+    <div class="empy-character">
+        <div>You don't have characters in your account yet.</div>
+    </div>
+{/if}
+
+
+{*}
+{if $viewFileTPL|strpos:"characters" !== false}
+    ok ok  ok 
+{/if}
+
+{$viewFileTPL}
+{/*}
+
 {foreach from=$characters key=k item=r}
     <div class="character clearfix">
         <div id="class-image">

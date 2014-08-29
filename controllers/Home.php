@@ -2,10 +2,10 @@
 
 namespace DPWeb\Controllers;
 
-class Home {
+class Home extends \DefaultController {
 
     public function index($data = array()) {
-        View::getInstance()->render('home', $data);
+        $this->view->render('home', $data);
     }
 
 }

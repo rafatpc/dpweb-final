@@ -26,30 +26,32 @@ class Account {
 
         if ($opt === 0 && strpos($classArray[$class], ' ') > 0) {
             return $classArray[$class];
-        } else if ($opt === 1) {
+        } else {
             $abbrev = explode(' ', $classArray[$class]);
             return substr($abbrev[0], 0, 1) . substr($abbrev[1], 0, 1);
-        } else {
-            if ($class <= 10) {
-                $img = 'sm';
-            } else if ($class <= 20) {
-                $img = 'bk';
-            } else if ($class <= 40) {
-                $img = 'me';
-            } else if ($class <= 50) {
-                $img = 'mg';
-            } else if ($class <= 70) {
-                $img = 'dl';
-            } else if ($class <= 90) {
-                $img = 'sum';
-            } else if ($class <= 100) {
-                $img = 'rf';
-            } else {
-                $img = 'unknown';
-            }
-
-            return $img;
         }
+    }
+
+    public function getClassImage($class) {
+        if ($class <= 10) {
+            $img = 'sm';
+        } else if ($class <= 20) {
+            $img = 'bk';
+        } else if ($class <= 40) {
+            $img = 'me';
+        } else if ($class <= 50) {
+            $img = 'mg';
+        } else if ($class <= 70) {
+            $img = 'dl';
+        } else if ($class <= 90) {
+            $img = 'sum';
+        } else if ($class <= 100) {
+            $img = 'rf';
+        } else {
+            $img = 'unknown';
+        }
+
+        return $img;
     }
 
     public function getCharacters() {
@@ -75,8 +77,8 @@ class Account {
                 }
             }
             $r['classname'] = $this->decodeClass($r['Class']);
-            $r['image'] = $this->decodeClass($r['Class'], 2);
-            
+            $r['image'] = $this->getClassImage($r['Class']);
+
             $charArr['characters'][$r['Name']] = $r;
         }
 

@@ -2,7 +2,7 @@
 
 namespace DPWeb\Controllers;
 
-class Login {
+class Login extends \DefaultController {
 
     public function index() {
         if (isset($_POST['login']) && !isset($_SESSION['dpw_user'])) {
