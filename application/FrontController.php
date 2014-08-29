@@ -33,6 +33,10 @@ class FrontController {
         $class = '\\DPWeb\\Controllers\\' . ucfirst($this->controller);
         $instance = new $class();
         
+        if(!method_exists($instance, $this->method)){
+            throw new \Exception('Method not implemented', 501);
+        }
+        
         if($this->params){
             call_user_func(array($instance, $this->method), $this->params); 
         } else {

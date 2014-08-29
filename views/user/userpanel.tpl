@@ -18,22 +18,22 @@
     <h2>Character Options</h2>
     <ul>
         <li>
-            <a href="#">Reset</a>
+            <a href="{$layout['baseurl']}character/reset">Reset</a>
         </li>
         <li>
-            <a href="#">Grand Reset</a>
+            <a href="{$layout['baseurl']}character/grandreset">Grand Reset</a>
         </li>
         <li>
-            <a href="#">Add stats</a>
+            <a href="{$layout['baseurl']}character/addstats">Add stats</a>
         </li>
         <li>
-            <a href="#">Double stat</a>
+            <a href="{$layout['baseurl']}character/doulestats">Double stat</a>
         </li>
         <li>
-            <a href="#">Warp</a>
+            <a href="{$layout['baseurl']}character/warp">Warp</a>
         </li>
         <li>
-            <a href="#">PK Clear</a>
+            <a href="{$layout['baseurl']}character/pkclear">PK Clear</a>
         </li>
     </ul>
 
@@ -87,7 +87,7 @@
         </ul>
     {/if}
     <hr />
-    <form action="logout.php" method="post" id="logout-form">
+    <form action="{$layout['baseurl']}logout.php" method="post" id="logout-form">
         <input type="hidden" name="logout" value="true" />
     </form>
 </div>

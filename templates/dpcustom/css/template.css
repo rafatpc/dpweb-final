@@ -145,7 +145,7 @@ aside #user #login-box form #inputs {
 }
 
 aside #user #login-box form #submit {
-    margin: 2px 0px 0px 5px;
+    margin: 7px 0px 0px 5px;
 }
 
 aside #user input[type="text"], aside #user input[type="password"] {
@@ -163,6 +163,7 @@ aside #user #login {
     border: none;
     width: 58px;
     height: 61px;
+    margin: 0px;
 }
 
 aside #main-menu {

@@ -6,11 +6,11 @@
     </p>
     <form method="post">
         <label>Enter your password:</label>
-        <input type="password" name="old" class="default" placeholder="Current password" maxlength="10" />
+        <input type="password" name="old" placeholder="Current password" maxlength="10" required />
         <label>Enter your new password:</label>
-        <input type="password" name="new" class="default" placeholder="New password" maxlength="10" />
+        <input type="password" name="new" placeholder="New password" maxlength="10" required />
         <label>Repeat your new password:</label>
-        <input type="password" name="renew" class="default" placeholder="Repeat new password" maxlength="10" />
+        <input type="password" name="renew" placeholder="Repeat new password" maxlength="10" required />
         <input type="submit" value="Change Password" />
     </form>
 </div>

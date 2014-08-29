@@ -6,10 +6,11 @@ class Login extends \DefaultController {
 
     public function index() {
         if (isset($_POST['login']) && !isset($_SESSION['dpw_user'])) {
-            new \Login($_POST['username'], $_POST['password']);
+            $li = new \DPWeb\Models\User\Login();
+            $li->loginUser($_POST['username'], $_POST['password']);
         }
-        
-        View::getInstance()->render('home');
+
+        $this->view->render('home');
     }
 
 }

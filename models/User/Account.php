@@ -2,13 +2,7 @@
 
 namespace DPWeb\Models\User;
 
-class Account {
-
-    private $db = null;
-
-    public function __construct() {
-        $this->db = \DPWeb\Application\Database::getInstance();
-    }
+class Account extends \DefaultModel {
 
     public function decodeClass($class, $opt = 0) {
         $classArray = array(
