@@ -2,17 +2,17 @@
 
 namespace DPWeb\Controllers;
 
-class User {
+class User extends \DefaultController {
 
     private $account = null;
 
-    public function __construct() {
+    public function checkSession() {
         if (!isset($_SESSION['dpw_user']) || !isset($_SESSION['dpw_pass']) || !\Validator::session()) {
             if (isset($_SESSION['dpw_user']) || isset($_SESSION['dpw_pass'])) {
                 session_destroy();
             }
 
-            header('Location: ./');
+            header('Location: ' . DPWEB_BASE_DIRECTORY);
             exit;
         }
 
@@ -20,22 +20,33 @@ class User {
     }
 
     public function index() {
-        View::getInstance()->render('home');
+        $this->checkSession();
+        $this->overview();
     }
 
     public function overview() {
-        View::getInstance()->render('user/characters', $this->account->getCharacters());
+        $this->checkSession();
+        $this->view->render('user/characters', $this->account->getCharacters());
     }
 
     public function edit($type) {
-        echo $type;
+        $this->checkSession();
+        
+        switch ($type) {
+            case 'password':
+                $this->view->render('user/changepassword');
+                break;
+            default:
+                $this->view->render('user/changemail');
+        }
     }
 
     public function reset($character = null) {
+        $this->checkSession();
         if ($character) {
             new \DPWeb\Models\Reset($character);
         } else {
-            $this->resetView();
+            View::getInstance()->render('user/characters', $this->account->getCharacters());
         }
     }
 

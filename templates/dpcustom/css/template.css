@@ -241,21 +241,33 @@ section #content-footer {
 }
 
 input::-webkit-input-placeholder {
+    font-variant: normal !important;
+    font-style: italic;
+    font-size: 10pt;
     color: #a9a9a9;
     opacity: 0.2;
 }
 
 input:-moz-placeholder {
+    font-variant: normal !important;
+    font-style: italic;
+    font-size: 10pt;
     color: #a9a9a9;
     opacity: 0.2;
 }
 
 input::-moz-placeholder {
+    font-variant: normal !important;
+    font-style: italic;
+    font-size: 10pt;
     color: #a9a9a9;
     opacity: 0.2;
 }
 
 input:-ms-input-placeholder {
+    font-variant: normal !important;
+    font-style: italic;
+    font-size: 10pt;
     color: #a9a9a9;
     opacity: 1;
 }

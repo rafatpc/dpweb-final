@@ -13,7 +13,8 @@ class Autoloader {
         $this->register();
         $this->setAliases(array(
             '\DPWeb\Application\Validator' => 'Validator',
-            '\DPWeb\Models\User\Login' => 'Login'
+            '\DPWeb\Models\User\Login' => 'Login',
+            '\DPWeb\Application\DefaultController' => 'DefaultController'
         ));
     }
 

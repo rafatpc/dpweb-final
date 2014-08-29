@@ -9,11 +9,6 @@ class FrontController {
     private $params = null;
 
     public function __construct() {
-        define('DPWEB_BASE_DIRECTORY', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
-        define('DPWEB_REQUEST', substr($_SERVER['REQUEST_URI'], strlen(DPWEB_BASE_DIRECTORY)));
-        $rest = explode('?', DPWEB_REQUEST);
-        define('RESTFUL_URI', $rest[0]);
-
         $this->setUpFrontController();
         $this->executeController();
     }

@@ -2,12 +2,12 @@
 
 namespace DPWeb\Controllers;
 
-class Test
-{
-    public function index() 
-    {
+class Test extends \DefaultController {
+
+    public function index() {
         $view = View::getInstance();
-        $view->setData(array('title' => 'Test title');
+        $view->setData(array('title' => 'Test title'));
         $view->render('home');
     }
+
 }
