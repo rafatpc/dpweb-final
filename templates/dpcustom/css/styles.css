@@ -59,6 +59,7 @@ label {
     color: #605454;
     font-size: 12pt;
     margin-left: 10px;
+    text-shadow: 1px 1px 2px #000000;
 }
 
 #userpanel-holder ul {
@@ -73,6 +74,10 @@ label {
     background-repeat: no-repeat;
     background-position: 0px 5px;
     padding-left: 14px;
+}
+
+#userpanel-holder ul li a {
+    text-shadow: 1px 1px 2px #000000;
 }
 
 #userpanel-holder ul li a:hover {
