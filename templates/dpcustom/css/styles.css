@@ -1,4 +1,4 @@
-input {
+input, select {
     padding: 5px;
     width: 272px;
     border: 1px solid #1c1817;
@@ -10,7 +10,12 @@ input {
     box-shadow: 0px 0px 4px #000000;
 }
 
-input:focus {
+select {
+    width: auto;
+    display: inline-block;
+}
+
+input:focus, select:focus {
     background-color: #171310;
 }
 
@@ -117,7 +122,7 @@ label {
 .character {
     margin-bottom: 10px;
     width: 663px;
-    height: 100px;
+    min-height: 100px;
     border: 1px solid #1c1817;
     background-color: #13100d;
 }
@@ -262,4 +267,72 @@ table td h2 {
 .left-column span {
     color: #605454 !important;
     font-size: 8pt !important;
+}
+
+.centered {
+    text-align: center;
+}
+
+#market-search input {
+    display: inline-block;
+}
+
+#itemlist-table {
+    margin: 15px auto 5px auto;
+    width: 630px;
+}
+
+#itemlist-table td {
+    width: auto !important;
+}
+
+#itemlist-table td input {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 0px 10px;
+    font-size: 9pt !important;
+    height: 26px;
+}
+
+#itemlist-table td:first-child {
+    text-align: center;
+}
+
+#itemlist-table td:last-child {
+    text-align: center;
+    padding-right: 0px;
+}
+
+.normal {
+    color: #FFFFFF !important;
+}
+
+.expensive {
+    color: #e3c469 !important;
+}
+
+.excellent {
+    color: #19ff7f !important;
+}
+
+.socket {
+    color: #ff19ff !important;
+}
+
+.ancient {
+    background-color: #3d3bc8;
+    color: #20ed3c !important;
+}
+
+.harmony {
+    color: #ffcc19 !important;
+}
+
+.guardian {
+    color: #b093b1 !important;
+}
+
+.excellent, .ancient, .socket, .harmony, .normal, .expensive, .guardian {
+    font-size: 9pt !important;
+    padding: 1px 5px;
 }

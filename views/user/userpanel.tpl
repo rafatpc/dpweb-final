@@ -40,19 +40,19 @@
     <h2>Items Options</h2>
     <ul>
         <li>
-            <a href="#">Market</a>
+            <a href="{$layout['baseurl']}items/market">Market</a>
         </li>
         <li>
-            <a href="#">Webshop</a>
+            <a href="{$layout['baseurl']}items/webshop">Webshop</a>
         </li>
         <li>
-            <a href="#">Take random item</a>
+            <a href="{$layout['baseurl']}items/randomitem">Take random item</a>
         </li>
         <li>
-            <a href="#">Auction</a>
+            <a href="{$layout['baseurl']}items/auction">Auction</a>
         </li>
         <li>
-            <a href="#">Web Quest</a>
+            <a href="{$layout['baseurl']}items/quest">Web Quest</a>
         </li>
     </ul>
 

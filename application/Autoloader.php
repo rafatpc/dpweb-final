@@ -48,6 +48,7 @@ class Autoloader {
             $filepath = $path . DIRECTORY_SEPARATOR . $file;
 
             if (!is_dir($path) || !is_readable($filepath) || !file_exists($filepath)) {
+                echo $filepath;
                 throw new \Exception("Couldn't load the requested class: {$file}", 404);
             }
 
