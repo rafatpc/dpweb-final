@@ -16,6 +16,8 @@ class FrontController {
     function setUpFrontController() {
         $components = explode('/', RESTFUL_URI, 3);
 
+        //TODO: Security checks
+        
         if (isset($components[0]) && !empty($components[0])) {
             $this->controller = $components[0];
         }
@@ -34,7 +36,7 @@ class FrontController {
         $instance = new $class();
         
         if(!method_exists($instance, $this->method)){
-            throw new \Exception('Method not implemented', 501);
+            throw new \Exception('Method not implemented: ' . $class . '->' . $this->method, 501);
         }
         
         if($this->params){

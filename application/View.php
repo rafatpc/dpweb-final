@@ -38,7 +38,7 @@ class View {
     }
     
     public function titleGenerator() {
-        //SHOULD BE UPDATE, I know :D
+        //SHOULD BE UPDATED, I know :D
         $this->layoutData['title'] = 'DarkPowerMu - Season 3 Episode 1 MuOnline :: ' . $_SERVER['REQUEST_URI'];
     }
 
@@ -92,7 +92,7 @@ class View {
 
     public function setTemplateData() {
         $this->layoutData['sess'] = $_SESSION;
-        $this->layoutData['baseurl'] = '//' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . '/';
+        $this->layoutData['baseurl'] = '//' . $_SERVER['SERVER_NAME'] . substr(dirname($_SERVER['PHP_SELF']), 0, -1) . '/';
         $this->layoutData['js'] = "templates/dpcustom/javascript/";
         $this->layoutData['imgs'] = "templates/dpcustom/images/";
         $this->layoutData['css'] = "templates/dpcustom/css/";

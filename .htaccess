@@ -1,9 +1,22 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !-d
+    RewriteCond %{REQUEST_URI} !(.*)/$
+    RewriteRule ^(.*)$ http://127.0.0.1/$1/ [L]
+
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} ^/([A-z0-9]+\/)*$
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+FileETag None
 
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE application/javascript
@@ -42,11 +55,41 @@
         Header set Cache-Control "max-age=604800, public"
     </FilesMatch>
 
-    <FilesMatch "\.(xml|txt|css|js)$">
+    <FilesMatch "\.(xml|txt)$">
         Header set Cache-Control "max-age=172800, proxy-revalidate"
     </FilesMatch>
 
     <FilesMatch "\.(html|htm|php)$">
         Header set Cache-Control "max-age=60, private, proxy-revalidate"
     </FilesMatch>
+    
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+  # CSS
+    ExpiresByType text/css                              "access plus 1 week"
+
+  # Data interchange
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/ld+json                   "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+
+  # Favicon (cannot be renamed!) and cursor images
+    ExpiresByType image/x-icon                          "access plus 1 week"
+
+  # JavaScript files
+    ExpiresByType text/javascript                       "access plus 1 week"
+    ExpiresByType application/javascript                "access plus 1 week"
+  
+  # HTML
+    ExpiresByType text/html                             "access plus 0 seconds"
+
+  # Manifest files
+    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+  # Web feeds
+    ExpiresByType application/atom+xml                  "access plus 1 hour"
+    ExpiresByType application/rss+xml                   "access plus 1 hour"
 </IfModule>

@@ -7,7 +7,7 @@ header('Content-type: text/html; charset=utf-8');
 $time = explode(' ', microtime());
 
 define('STARTTIME', ($time[1] + $time[0]));
-define('DPWEB_BASE_DIRECTORY', dirname($_SERVER['SCRIPT_NAME']) . '/');
+define('DPWEB_BASE_DIRECTORY', substr(dirname($_SERVER['SCRIPT_NAME']), 0, -1) . '/');
 define('DPWEB_REQUEST', substr($_SERVER['REQUEST_URI'], strlen(DPWEB_BASE_DIRECTORY)));
 define('RESTFUL_URI', current(explode('?', DPWEB_REQUEST)));
 
