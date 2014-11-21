@@ -336,3 +336,20 @@ table td h2 {
     font-size: 9pt !important;
     padding: 1px 5px;
 }
+
+input.small-input {
+    width: 150px;
+}
+
+#register-form > div > p {
+    font-size: 12px;
+}
+
+#register-form input, #register-form select, #register-form > div > div {
+    margin: -10px 0px 20px 20px;
+}
+
+#register-form select {
+    box-sizing: border-box;
+    width: 272px;
+}

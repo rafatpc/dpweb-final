@@ -1,100 +1,58 @@
 <div class="register-page">
-
+    <form method="post" id="register-form">
+        <div>
+            <h3>Username</h3>
+            <p>
+                You can use any characters (latin), numbers and underscore. The length should be between 5 and 10 characters.
+            </p>
+            <input type="text" maxlength="10" placeholder="Username" name="username" required />
+        </div>
+        <div>
+            <h3>Password</h3>
+            <p>
+                You can use any characters (latin), numbers and underscore. The length should be between 6 and 15 characters.
+            </p>
+            <input type="password" maxlength="15" placeholder="Password" name="password" required />
+        </div>
+        <div>
+            <h3>Repeat Password</h3>
+            <p></p>
+            <input type="password" maxlength="15" placeholder="Repeat password" name="repassword" required />
+        </div>
+        <div>
+            <h3>E-mail</h3>
+            <p>
+                It will be used if you forget you password! Please use real email!
+            </p>
+            <input type="email" maxlength="50" placeholder="mail@example.com" name="mail" required />
+        </div>
+        <div>
+            <h3>Secret Question</h3>
+            <p>
+                It will be used if you forget you password! Please remember it!
+            </p>
+            <select name="question" required>
+                <option value="1">ASdasd asd sad 1</option>
+                <option value="2">ASdasd asd sad 1</option>
+                <option value="3">ASdasd asd sad 1</option>
+            </select>
+        </div>
+        <div>
+            <h3>Secret Answer</h3>
+            <p>
+                It will be used if you forget you password! Please remember it! The length should be between 5 and 10 characters.
+            </p>
+            <input type="text" maxlength="20" placeholder="Answer" name="answer" required />
+        </div>
+        <div>
+            <h3>Are you a human?</h3>
+            <p>
+                Please enter the text from the image below to proove that you are a human.
+            </p>
+            <div style="width: 250px; text-align: center; padding: 50px 0; background-color: #000000; margin-bottom: 30px;">PLACEHOLDER</div>
+            <input type="hidden" name="register-user" value="true" />
+            <input type="text" class="small-input" name="antispam" maxlength="7" required />
+        </div>
+        <input type="submit" value="Register" />
+    </form>
 </div>
-<style>
-fieldset {
-    border: 1px solid #dddddd;
-    margin: 1.125rem 0;
-    padding: 1.25rem;
-}
-
-fieldset legend {
-    background: none repeat scroll 0 0 white;
-    font-weight: bold;
-    margin: 0 0 0 -0.1875rem;
-    padding: 0 0.1875rem;
-}
-
-.input:first-of-type {
-    margin-top: 0;
-}
-
-label {
-    color: #4d4d4d;
-    cursor: pointer;
-    display: block;
-    font-size: 0.875rem;
-    font-weight: normal;
-    line-height: 1.5;
-    margin-bottom: 0;
-}
-
-input[type="text"], input[type="password"],
-input[type="date"], input[type="datetime"],
-input[type="datetime-local"], input[type="month"],
-input[type="week"], input[type="email"],
-input[type="number"], input[type="search"],
-input[type="tel"], input[type="time"],
-input[type="url"], textarea {
-    background-color: white;
-    border: 1px solid #cccccc;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-    box-sizing: border-box;
-    color: rgba(0, 0, 0, 0.75);
-    display: block;
-    font-family: inherit;
-    border-radius: 5px;
-    font-size: 0.875rem;
-    height: 2.3125rem;
-    margin: 0 0 1rem;
-    padding: 0.5rem;
-    transition: box-shadow 0.45s ease 0s, border-color 0.45s ease-in-out 0s;
-    width: 100%;
-}
-
-.customer-fields.customer-fields-header {
-    background: none repeat scroll 0 0 #f9f9f9;
-}
-
-.customer-fields:nth-child(2n+1) {
-    background: none repeat scroll 0 0 #f5f5f5;
-}
-
-.customer-fields:first-child {
-    background: none repeat scroll 0 0 #f5f5f5;
-}
-
-.customer-fields {
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-}
-
-.customer-fields:before, .customer-fields:after {
-    content: " ";
-    display: table;
-}
-
-aside#steps, .invoices-index .approved-invoice-summary > div,
-.confirm-funding .overview .overview-field, .customer-fields .input {
-    float: left;
-    padding-left: 0.9375rem;
-    padding-right: 0.9375rem;
-    width: 25%;
-}
-
-abbr[title="required"] {
-    color: red;
-}
-
-abbr {
-    text-transform: none;
-}
-
-abbr, acronym {
-    border-bottom: 1px dotted #dddddd;
-    color: #222222;
-    cursor: help;
-    font-size: 90%;
-    text-transform: uppercase;
-}
-</style>

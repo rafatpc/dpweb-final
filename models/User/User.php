@@ -42,4 +42,7 @@ class Login extends \DefaultModel {
         }
     }
 
+    public function register($user, $pass, $mail, $question, $answer, $anispam) {
+        
+    }
 }

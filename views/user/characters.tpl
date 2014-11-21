@@ -5,9 +5,9 @@
 {/if}
 
 {$currentPage = "/"|explode:$smarty.server.REQUEST_URI}
-{assign var="tplPath" value="./views/user/`$currentPage[3]`.tpl"}
-{assign var="tplFile" value="./`$currentPage[3]`.tpl"}
-{$opt = $currentPage[3]}
+{assign var="tplPath" value="./views/user/`$currentPage[2]`.tpl"}
+{assign var="tplFile" value="./`$currentPage[2]`.tpl"}
+{$opt = $currentPage[2]}
 {foreach from=$characters key=k item=r}
     <div class="character clearfix">
         <div id="class-image">

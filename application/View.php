@@ -67,7 +67,7 @@ class View {
         $this->layoutData = array(
             'links' => array(
                 'Home' => 'home',
-                'Register' => 'register',
+                'Register' => 'user/register',
                 'Rankings' => 'rankings',
                 'Download' => 'download',
                 'Castle Siege' => 'castlesiege',
