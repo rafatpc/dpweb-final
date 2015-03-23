@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 input, select {
-=======
-input {
->>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
     padding: 5px;
     width: 272px;
     border: 1px solid #1c1817;
@@ -14,16 +10,12 @@ input {
     box-shadow: 0px 0px 4px #000000;
 }
 
-<<<<<<< HEAD
 select {
     width: auto;
     display: inline-block;
 }
 
 input:focus, select:focus {
-=======
-input:focus {
->>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
     background-color: #171310;
 }
 
@@ -130,11 +122,7 @@ label {
 .character {
     margin-bottom: 10px;
     width: 663px;
-<<<<<<< HEAD
     min-height: 100px;
-=======
-    height: 100px;
->>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
     border: 1px solid #1c1817;
     background-color: #13100d;
 }
@@ -279,7 +267,6 @@ table td h2 {
 .left-column span {
     color: #605454 !important;
     font-size: 8pt !important;
-<<<<<<< HEAD
 }
 
 .centered {
@@ -365,6 +352,4 @@ input.small-input {
 #register-form select {
     box-sizing: border-box;
     width: 272px;
-=======
->>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
 }

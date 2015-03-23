@@ -2,7 +2,8 @@
 
 namespace DPWeb\Models\User;
 
-class Account extends \DefaultModel {
+class Account extends \DefaultModel
+{
 
     public function decodeClass($class, $opt = 0) {
         $classArray = array(
@@ -70,10 +71,7 @@ class Account extends \DefaultModel {
                     break;
                 }
             }
-<<<<<<< HEAD
-            
-=======
->>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
+
             $r['classname'] = $this->decodeClass($r['Class']);
             $r['image'] = $this->getClassImage($r['Class']);
 
@@ -82,8 +80,7 @@ class Account extends \DefaultModel {
 
         return $charArr;
     }
-<<<<<<< HEAD
-    
+
     public function loginUser($user, $pass) {
         $user = $this->db->escape($user);
         $pass = $this->db->escape($pass);
@@ -112,8 +109,8 @@ class Account extends \DefaultModel {
 
         $login = $this->db->query("Select [memb__pwd], [memb___id] from [MEMB_INFO] Where [memb___id]='{$user}' and [memb__pwd]={$password}");
         $nr = $this->db->numRows($login);
-        
-        if($nr === 1){
+
+        if ($nr === 1) {
             $fa = $this->db->fetchArray($login);
             $_SESSION['dpw_user'] = $fa['memb___id'];
             $_SESSION['dpw_pass'] = strtoupper(bin2hex($fa['memb__pwd']));
@@ -125,7 +122,5 @@ class Account extends \DefaultModel {
     public function register($user, $pass, $mail, $question, $answer, $anispam) {
         
     }
-=======
->>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
 
 }
