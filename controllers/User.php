@@ -2,14 +2,19 @@
 
 namespace DPWeb\Controllers;
 
+<<<<<<< HEAD
 class User extends \DefaultController
 {
+=======
+class User extends \DefaultController {
+>>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
 
     public function index() {
         $this->checkSession();
         $this->overview();
     }
 
+<<<<<<< HEAD
     public function login() {
         if (isset($_POST['login']) && !isset($_SESSION['dpw_user'])) {
             $li = new \DPWeb\Models\User\Account();
@@ -30,6 +35,8 @@ class User extends \DefaultController
         }
     }
 
+=======
+>>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
     public function overview() {
         $this->view->render('user/characters', $this->checkSession()->getCharacters());
     }

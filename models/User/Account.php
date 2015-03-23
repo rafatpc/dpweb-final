@@ -70,7 +70,10 @@ class Account extends \DefaultModel {
                     break;
                 }
             }
+<<<<<<< HEAD
             
+=======
+>>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
             $r['classname'] = $this->decodeClass($r['Class']);
             $r['image'] = $this->getClassImage($r['Class']);
 
@@ -79,6 +82,7 @@ class Account extends \DefaultModel {
 
         return $charArr;
     }
+<<<<<<< HEAD
     
     public function loginUser($user, $pass) {
         $user = $this->db->escape($user);
@@ -121,5 +125,7 @@ class Account extends \DefaultModel {
     public function register($user, $pass, $mail, $question, $answer, $anispam) {
         
     }
+=======
+>>>>>>> 798aa1085cde3442cac6b1b50be0c40050a7c850
 
 }
