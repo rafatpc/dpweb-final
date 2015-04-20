@@ -11,11 +11,11 @@ define('DPWEB_BASE_DIRECTORY', substr(dirname($_SERVER['SCRIPT_NAME']), 0, -1) .
 define('DPWEB_REQUEST', substr($_SERVER['REQUEST_URI'], strlen(DPWEB_BASE_DIRECTORY)));
 define('RESTFUL_URI', current(explode('?', DPWEB_REQUEST)));
 
-require_once './application/DPWeb.php';
-require_once './application/libs/Smarty/Smarty.class.php';
+require_once './system/DPWeb.php';
+require_once './system/libs/Smarty/Smarty.class.php';
 
 //try {
-$app = \DPWeb\Application\DPWeb::getInstance();
+$app = \DPWeb\System\DPWeb::getInstance();
 //} catch (Exception $exc) {
 //    echo "<pre>";
 //    echo $exc->getMessage();

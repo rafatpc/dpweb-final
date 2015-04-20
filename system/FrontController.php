@@ -1,6 +1,6 @@
 <?php
 
-namespace DPWeb\Application;
+namespace DPWeb\System;
 
 class FrontController {
 

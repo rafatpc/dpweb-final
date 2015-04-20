@@ -1,6 +1,6 @@
 <?php
 
-namespace DPWeb\Application;
+namespace DPWeb\System;
 
 class Database {
 
@@ -10,7 +10,7 @@ class Database {
     public static $instance = null;
 
     private function __construct() {
-        $this->cnf = \DPWeb\Application\Config::getInstance()->main;
+        $this->cnf = \DPWeb\System\Config::getInstance()->main;
         $this->connect($this->cnf['host'], $this->cnf['user'], $this->cnf['pass']);
         $this->setDatabase($this->cnf['database']);
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace DPWeb\Application;
+namespace DPWeb\System;
 
-require_once './application/Autoloader.php';
+require_once './system/Autoloader.php';
 
 class DPWeb {
     
@@ -10,9 +10,9 @@ class DPWeb {
 
     private function __construct() {
         set_exception_handler(array($this, 'exceptionHandler'));
-        new \DPWeb\Application\Autoloader();
-        \DPWeb\Application\Config::getInstance();
-        new \DPWeb\Application\FrontController();
+        new \DPWeb\System\Autoloader();
+        \DPWeb\System\Config::getInstance();
+        new \DPWeb\System\FrontController();
         
         if ($this->config->main['development']) {
             error_reporting(E_ERROR | E_PARSE | E_NOTICE);

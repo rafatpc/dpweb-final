@@ -2,57 +2,57 @@
     <h2>Account Options</h2>
     <ul>
         <li>
-            <a href="{$layout['baseurl']}user/overview">Account overview</a>
+            <a href="/user/overview">Account overview</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}user/edit/password">Change Password</a>
+            <a href="/user/edit/password">Change Password</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}user/edit/email">Change E-mail</a>
+            <a href="/user/edit/email">Change E-mail</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}logout.php" id="logout-submit">Logout</a>
+            <a href="/logout" id="logout-submit">Logout</a>
         </li>
     </ul>
 
     <h2>Character Options</h2>
     <ul>
         <li>
-            <a href="{$layout['baseurl']}character/reset">Reset</a>
+            <a href="/character/reset">Reset</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}character/grandreset">Grand Reset</a>
+            <a href="/character/grandreset">Grand Reset</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}character/addstats">Add stats</a>
+            <a href="/character/addstats">Add stats</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}character/doulestats">Double stat</a>
+            <a href="/character/doulestats">Double stat</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}character/warp">Warp</a>
+            <a href="/character/warp">Warp</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}character/pkclear">PK Clear</a>
+            <a href="/character/pkclear">PK Clear</a>
         </li>
     </ul>
 
     <h2>Items Options</h2>
     <ul>
         <li>
-            <a href="{$layout['baseurl']}items/market">Market</a>
+            <a href="/items/market">Market</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}items/webshop">Webshop</a>
+            <a href="/items/webshop">Webshop</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}items/randomitem">Take random item</a>
+            <a href="/items/randomitem">Take random item</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}items/auction">Auction</a>
+            <a href="/items/auction">Auction</a>
         </li>
         <li>
-            <a href="{$layout['baseurl']}items/quest">Web Quest</a>
+            <a href="/items/quest">Web Quest</a>
         </li>
     </ul>
 
@@ -87,7 +87,7 @@
         </ul>
     {/if}
     <hr />
-    <form action="{$layout['baseurl']}logout.php" method="post" id="logout-form">
+    <form action="/logout" method="post" id="logout-form">
         <input type="hidden" name="logout" value="true" />
     </form>
 </div>

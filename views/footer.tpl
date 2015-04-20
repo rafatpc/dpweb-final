@@ -5,7 +5,7 @@
                     </div>
                     </div>
                     <div id="content-footer">
-                        <img src="{$layout['baseurl']}{$layout['imgs']}content-footer.png" alt="Content Footer" />
+                        <img src="/{$layout['imgs']}content-footer.png" alt="Content Footer" />
                     </div>
                 </section>
             </div>

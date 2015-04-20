@@ -1,8 +1,9 @@
 <?php
 
-namespace DPWeb\Application;
+namespace DPWeb\System;
 
-class View {
+class View
+{
 
     public $layoutData = array();
     public $smarty = null;
@@ -14,11 +15,11 @@ class View {
         $smarty->setCompileDir('./views/compiled');
         $smarty->setTemplateDir('./views');
 
-        if (!\DPWeb\Application\Config::getInstance()->main['development']) {
+        if (!\DPWeb\System\Config::getInstance()->main['development']) {
             $smarty->caching = true;
             $smarty->cache_lifetime = 120;
         } else {
-            if (\DPWeb\Application\Config::getInstance()->main['smartydebug']) {
+            if (\DPWeb\System\Config::getInstance()->main['smartydebug']) {
                 $smarty->debugging = true;
             }
         }
@@ -26,7 +27,7 @@ class View {
         $this->smarty = $smarty;
         $this->dpcustom();
     }
-    
+
     public function setData($data = array()) {
         $this->layoutData = array_merge($this->layoutData, $data);
         return $this; // in order to chain 
@@ -36,10 +37,19 @@ class View {
     public function setError($value) {
         $this->layoutData['errors'] = $value;
     }
-    
+
     public function titleGenerator() {
         //SHOULD BE UPDATED, I know :D
-        $this->layoutData['title'] = 'DarkPowerMu - Season 3 Episode 1 MuOnline :: ' . $_SERVER['REQUEST_URI'];
+        #TODO
+        if ($_SERVER['REQUEST_URI'] == '/') {
+            $page = 'Home';
+        } else {
+            //str_replace("/", ", ", )
+            $request = explode('/', trim($_SERVER['REQUEST_URI'], "\0x20\r\n\t\\/"));
+            $page = ucwords(implode(' ', array_reverse($request)));
+        }
+
+        $this->layoutData['title'] = $page . " | Private MuOnline Server";
     }
 
     public function render($view, $data = array()) {
@@ -48,7 +58,7 @@ class View {
         $this->setTemplateData();
         $this->titleGenerator();
         $data['layout'] = $this->layoutData;
-        
+
         if (!$smarty->templateExists($viewFile)) {
             $viewFile = '404.tpl';
         }
@@ -92,7 +102,6 @@ class View {
 
     public function setTemplateData() {
         $this->layoutData['sess'] = $_SESSION;
-        $this->layoutData['baseurl'] = '//' . $_SERVER['SERVER_NAME'] . substr(dirname($_SERVER['PHP_SELF']), 0, -1) . '/';
         $this->layoutData['js'] = "templates/dpcustom/javascript/";
         $this->layoutData['imgs'] = "templates/dpcustom/images/";
         $this->layoutData['css'] = "templates/dpcustom/css/";

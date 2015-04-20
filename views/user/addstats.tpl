@@ -33,17 +33,17 @@
             <tr>
                 <td>
                     {if $lupp == 1}
-                        <img src="{$layout['baseurl']}{$layout['imgs']}check.png" alt="OK" />
+                        <img src="/{$layout['imgs']}check.png" alt="OK" />
                     {else}
-                        <img src="{$layout['baseurl']}{$layout['imgs']}cancel.png" alt="NOT" />
+                        <img src="/{$layout['imgs']}cancel.png" alt="NOT" />
                     {/if}
                     {$r['LevelUpPoint']|number_format:0:".":","} Points
                 </td>
                 <td>
                     {if $money == 1}
-                        <img src="{$layout['baseurl']}{$layout['imgs']}check.png" alt="OK" />
+                        <img src="/{$layout['imgs']}check.png" alt="OK" />
                     {else}
-                        <img src="{$layout['baseurl']}{$layout['imgs']}cancel.png" alt="NOT" />
+                        <img src="/{$layout['imgs']}cancel.png" alt="NOT" />
                     {/if}
                     {1000000|number_format:0:".":","} Zen
                 </td>

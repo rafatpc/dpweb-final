@@ -1,6 +1,6 @@
 <?php
 
-namespace DPWeb\Application;
+namespace DPWeb\System;
 
 class Autoloader {
 
@@ -12,9 +12,9 @@ class Autoloader {
     public function __construct() {
         $this->register();
         $this->setAliases(array(
-            '\DPWeb\Application\Validator' => 'Validator',
-            '\DPWeb\Application\DefaultController' => 'DefaultController',
-            '\DPWeb\Application\DefaultModel' => 'DefaultModel'
+            '\DPWeb\System\Validator' => 'Validator',
+            '\DPWeb\System\DefaultController' => 'DefaultController',
+            '\DPWeb\System\DefaultModel' => 'DefaultModel'
         ));
     }
 

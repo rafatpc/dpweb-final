@@ -13,10 +13,14 @@ class User extends \DefaultController
     public function login() {
         if (isset($_POST['login']) && !isset($_SESSION['dpw_user'])) {
             $li = new \DPWeb\Models\User\Account();
-            $li->loginUser($_POST['username'], $_POST['password']);
+            if (!$li->loginUser($_POST['username'], $_POST['password'])) {
+                $this->view->render('home');
+            } else {
+                header('Location: /user/overview/');
+            }
+        } else {
+            $this->view->render('home');
         }
-
-        $this->view->render('home');
     }
 
     public function register() {

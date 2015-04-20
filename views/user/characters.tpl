@@ -11,7 +11,7 @@
 {foreach from=$characters key=k item=r}
     <div class="character clearfix">
         <div id="class-image">
-            <img src="{$layout['baseurl']}{$layout['imgs']}classes/small/{$r['image']}.png" alt="{$r['image']}" />
+            <img src="/{$layout['imgs']}classes/small/{$r['image']}.png" alt="{$r['image']}" />
         </div>
         <div id="character-info">
             <table>

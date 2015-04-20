@@ -101,7 +101,7 @@ class Account extends \DefaultModel
             $this->view->setError('The lenght of the password should be between 4 and 10 characters!');
         }
 
-        if (\DPWeb\Application\Config::getInstance()->main['md5']) {
+        if (\DPWeb\System\Config::getInstance()->main['md5']) {
             $password = "[dbo].[fn_md5]('{$pass}','{$user}')";
         } else {
             $password = "'{$pass}'";
@@ -116,7 +116,10 @@ class Account extends \DefaultModel
             $_SESSION['dpw_pass'] = strtoupper(bin2hex($fa['memb__pwd']));
         } else {
             $this->view->setError('Invalid username or password!');
+            return false;
         }
+
+        return true;
     }
 
     public function register($user, $pass, $mail, $question, $answer, $anispam) {
